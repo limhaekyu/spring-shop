@@ -12,6 +12,10 @@ spring:
       hibernate:
         format_sql: true
 
+  mvc:
+    view:
+      suffix: .html
+
 logging:
   level:
     org:
