@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7da16c6e-babe-4ba2-9902-2e25a74deb73" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/model/CategoryType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/model/OrderStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/answer/domain/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/answer/domain/Answer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/product/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/product/domain/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/productReview/domain/ProductReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/productReview/domain/ProductReview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/question/domain/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/question/domain/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/user/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/answer/domain/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/answer/domain/Answer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/like/domain/Like.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/like/domain/Like.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/order/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/order/domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/product/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/product/domain/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/productImage/domain/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/productImage/domain/ProductImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/productReview/domain/ProductReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/productReview/domain/ProductReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/productReviewImage/domain/ProductReviewImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/productReviewImage/domain/ProductReviewImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/question/domain/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/question/domain/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/user/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/wish/domain/Wish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/wish/domain/Wish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/global/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/global/controller/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/global/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/global/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/global/security/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/global/security/WebMvcConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +49,7 @@
       <list>
         <option value="HTML File" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -101,6 +112,9 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.springshop.domain.model" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/wishList" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/product" />
@@ -140,7 +154,7 @@
       <updated>1655375836326</updated>
       <workItem from="1655375837636" duration="5000" />
       <workItem from="1655780327833" duration="3289000" />
-      <workItem from="1655960667992" duration="4637000" />
+      <workItem from="1655960667992" duration="6327000" />
     </task>
     <servers />
   </component>
