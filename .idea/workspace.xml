@@ -5,36 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7da16c6e-babe-4ba2-9902-2e25a74deb73" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/answer/domain/Answer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/like/domain/Like.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/order/domain/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/product/domain/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/productImage/domain/ProductImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/productReview/domain/ProductReview.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/productReviewImage/domain/ProductReviewImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/question/domain/Question.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/user/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/wish/domain/Wish.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/global/controller/ViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/global/security/WebMvcConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/springshop/global/controller/PageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/springshop/global/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/springshop/global/security/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/global/controller/PageController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/global/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/global/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/answer/domain/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/answer/domain/Answer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/product/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/product/domain/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/productReview/domain/ProductReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/productReview/domain/ProductReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/question/domain/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/question/domain/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/domain/user/domain/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +140,7 @@
       <updated>1655375836326</updated>
       <workItem from="1655375837636" duration="5000" />
       <workItem from="1655780327833" duration="3289000" />
-      <workItem from="1655960667992" duration="3092000" />
+      <workItem from="1655960667992" duration="4637000" />
     </task>
     <servers />
   </component>
