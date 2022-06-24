@@ -19,9 +19,9 @@ public class UserController {
         userService.createtUser(createUserDto);
     }
 
-    @DeleteMapping("/api/shop/user")
-    public void deleteUser(){
-
+    @DeleteMapping("/api/shop/{id}/user")
+    public void deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
     }
 
     @PutMapping("/api/shop/user")

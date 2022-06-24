@@ -18,4 +18,10 @@ public class UserService {
         User user = new User(insertUserDto.getUserName(), insertUserDto.getEmail(), insertUserDto.getPassword());
         userRepository.save(user);
     }
+
+    public void deleteUser(Long id) {
+        User user = userRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("없는 유저입니다."));
+        userRepository.delete(user);
+    }
 }
