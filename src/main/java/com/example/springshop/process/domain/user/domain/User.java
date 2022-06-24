@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class User {
     @Column(name = "user_name")
     private String userName;
 
+    @Email
     @Column(name = "email")
     private String email;
 
@@ -67,6 +69,16 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Answer> answer = new ArrayList<>();
 
+    public User(String userName, String email, String password) {
+        this.userName = userName;
+        this.email= email;
+        this.password = password;
+    }
+
+    public void updateUserInfo(String userName, String passowrd){
+        this.userName = userName;
+        this.password = passowrd;
+    }
 
 
 
