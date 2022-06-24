@@ -6,11 +6,16 @@ spring:
     password:
 
   jpa:
+    show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
+
+  h2:
+    console:
+      enable: true
 
   mvc:
     view:
