@@ -2,6 +2,7 @@ package com.example.springshop.process.domain.user.service;
 
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.dto.CreateUserDto;
+import com.example.springshop.process.domain.user.dto.UpdateUserInfoDto;
 import com.example.springshop.process.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,17 @@ public class UserService {
         User user = userRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("없는 유저입니다."));
         userRepository.delete(user);
+    }
+
+    public void updateUserInfo(Long id, UpdateUserInfoDto updateUserDto) {
+        User user = userRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("없는 유저입니다."));
+
+        user.updateUserInfo(
+                updateUserDto.getUserName(),
+                updateUserDto.getPassword()
+        );
+
+
     }
 }

@@ -3,6 +3,7 @@ package com.example.springshop.process.domain.user.controller;
 import javax.validation.Valid;
 
 import com.example.springshop.process.domain.user.dto.CreateUserDto;
+import com.example.springshop.process.domain.user.dto.UpdateUserInfoDto;
 import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +25,9 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    @PutMapping("/api/shop/user")
-    public void updateUser(){
-
+    @PutMapping("/api/shop/{id}/user")
+    public void updateUser(@PathVariable Long id, @RequestBody UpdateUserInfoDto updateUserDto){
+        userService.updateUserInfo(id, updateUserDto);
     }
 
     @GetMapping("/api/shop/user")

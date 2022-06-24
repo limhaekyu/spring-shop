@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7da16c6e-babe-4ba2-9902-2e25a74deb73" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/user/dto/UpdateUserInfoDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/user/domain/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springshop/process/domain/user/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,8 +37,8 @@
       <list>
         <option value="HTML File" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -101,6 +102,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.springshop.process.domain.user.dto" />
       <recent name="com.example.springshop.process.domain.user.repository" />
       <recent name="com.example.springshop.process.domain.user.service" />
       <recent name="com.example.springshop.domain.model" />
@@ -145,7 +147,7 @@
       <workItem from="1655375837636" duration="5000" />
       <workItem from="1655780327833" duration="3289000" />
       <workItem from="1655960667992" duration="6682000" />
-      <workItem from="1656001238730" duration="4177000" />
+      <workItem from="1656001238730" duration="4775000" />
     </task>
     <servers />
   </component>
