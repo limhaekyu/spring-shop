@@ -30,8 +30,4 @@ public class UserController {
         userService.updateUserInfo(id, updateUserDto);
     }
 
-    @GetMapping("/api/shop/user")
-    public void findUser(){
-
-    }
 }
