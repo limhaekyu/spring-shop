@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -21,9 +23,9 @@ public class UserService {
     }
 
     public void deleteUser(Long id) {
-        User user = userRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("없는 유저입니다."));
-        userRepository.delete(user);
+        userRepository.delete(
+                userRepository.findById(id).orElseThrow(
+                        () -> new IllegalArgumentException("없는 유저입니다.")));
     }
 
     public void updateUserInfo(Long id, UpdateUserInfoDto updateUserDto) {
@@ -34,7 +36,13 @@ public class UserService {
                 updateUserDto.getUserName(),
                 updateUserDto.getPassword()
         );
-
-
     }
+
+    public User findUserById(Long id){
+        User user = userRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("없는 유저입니다."));
+
+        return user;
+    }
+
 }

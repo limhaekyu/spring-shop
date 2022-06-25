@@ -1,6 +1,6 @@
-package com.example.springshop.process.domain.answer.domain;
+package com.example.springshop.process.domain.likes.domain;
 
-import com.example.springshop.process.domain.question.domain.Question;
+import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.user.domain.User;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
@@ -13,20 +13,18 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "answer")
-public class Answer {
+@Table(name = "likes")
+public class Likes {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "answer_id")
+    @Column(name = "like_id")
     private Long id;
 
-    @Column(name = "answer_contents")
-    private String answerContents;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id")
+    @JoinColumn(name = "product_id")
     @JsonManagedReference
-    private Question question;
+    private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

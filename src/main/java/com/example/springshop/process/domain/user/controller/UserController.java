@@ -30,4 +30,9 @@ public class UserController {
         userService.updateUserInfo(id, updateUserDto);
     }
 
+    @GetMapping("/api/shop/{id}/user")
+    public void findUser(@PathVariable Long id){
+        userService.findUserById(id);
+    }
+
 }

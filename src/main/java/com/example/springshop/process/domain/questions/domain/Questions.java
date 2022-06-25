@@ -1,6 +1,6 @@
-package com.example.springshop.process.domain.question.domain;
+package com.example.springshop.process.domain.questions.domain;
 
-import com.example.springshop.process.domain.answer.domain.Answer;
+import com.example.springshop.process.domain.answers.domain.Answers;
 import com.example.springshop.process.domain.user.domain.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -16,8 +16,8 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "question")
-public class Question {
+@Table(name = "questions")
+public class Questions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "question_id")
@@ -36,7 +36,7 @@ public class Question {
 
     @JsonBackReference
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Answer> answer = new ArrayList<>();
+    private List<Answers> answer = new ArrayList<>();
 
 
 }

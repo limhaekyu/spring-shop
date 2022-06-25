@@ -1,8 +1,8 @@
 package com.example.springshop.process.domain.product.domain;
 
-import com.example.springshop.process.domain.like.domain.Like;
+import com.example.springshop.process.domain.likes.domain.Likes;
 import com.example.springshop.process.domain.model.CategoryType;
-import com.example.springshop.process.domain.order.domain.Order;
+import com.example.springshop.process.domain.orders.domain.Orders;
 import com.example.springshop.process.domain.productImage.domain.ProductImage;
 import com.example.springshop.process.domain.productReview.domain.ProductReview;
 import com.example.springshop.process.domain.user.domain.User;
@@ -53,11 +53,11 @@ public class Product {
 
     @JsonBackReference
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Like> like = new ArrayList<>();
+    private List<Likes> like = new ArrayList<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Order> order = new ArrayList<>();
+    private List<Orders> order = new ArrayList<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

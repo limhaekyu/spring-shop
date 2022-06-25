@@ -1,11 +1,11 @@
 package com.example.springshop.process.domain.user.domain;
 
-import com.example.springshop.process.domain.answer.domain.Answer;
-import com.example.springshop.process.domain.like.domain.Like;
-import com.example.springshop.process.domain.order.domain.Order;
+import com.example.springshop.process.domain.answers.domain.Answers;
+import com.example.springshop.process.domain.likes.domain.Likes;
+import com.example.springshop.process.domain.orders.domain.Orders;
 import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.productReview.domain.ProductReview;
-import com.example.springshop.process.domain.question.domain.Question;
+import com.example.springshop.process.domain.questions.domain.Questions;
 import com.example.springshop.process.domain.wish.domain.Wish;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
@@ -55,19 +55,19 @@ public class User {
 
     @JsonBackReference
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Like> like = new ArrayList<>();
+    private List<Likes> like = new ArrayList<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Order> order = new ArrayList<>();
+    private List<Orders> order = new ArrayList<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Question> question = new ArrayList<>();
+    private List<Questions> question = new ArrayList<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Answer> answer = new ArrayList<>();
+    private List<Answers> answer = new ArrayList<>();
 
     public User(String userName, String email, String password) {
         this.userName = userName;

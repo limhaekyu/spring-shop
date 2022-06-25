@@ -1,4 +1,4 @@
-package com.example.springshop.process.domain.order.domain;
+package com.example.springshop.process.domain.orders.domain;
 
 import com.example.springshop.process.domain.model.OrderStatus;
 import com.example.springshop.process.domain.product.domain.Product;
@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "order")
-public class Order {
+@Table(name = "orders")
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
