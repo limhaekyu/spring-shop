@@ -10,6 +10,8 @@ import com.example.springshop.process.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LikeService {
@@ -43,4 +45,9 @@ public class LikeService {
         likeRepository.delete(like);
     }
 
+    public List<Likes> selectUserLike(Long userId) {
+        List<Likes> userLikesList = likeRepository.findAllByUser(
+                userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("없는 유저입니다.")));
+        return userLikesList;
+    }
 }
