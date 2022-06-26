@@ -31,6 +31,14 @@ public class LikeService {
         productService.productAddLike(product.getId());
         likeRepository.save(like);
 
-
     }
+
+    public void cancelLike(Long productId, Long userId){
+
+        Likes like = likeRepository.findByProductAndUser(
+                productRepository.findById(productId).orElseThrow(()->new IllegalArgumentException("없는 상품입니다.")),
+                userRepository.findById(userId).orElseThrow(()->new IllegalArgumentException("없는 유저입니다.")));
+        likeRepository.delete(like);
+    }
+
 }

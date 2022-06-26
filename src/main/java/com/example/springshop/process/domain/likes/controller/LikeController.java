@@ -15,8 +15,8 @@ public class LikeController {
         likeService.addLike(productId, id);
     }
 
-    @DeleteMapping("/api/shop/like")
-    public void cancelLike(){
-
+    @DeleteMapping("/api/shop/{id}/like")
+    public void cancelLike(@PathVariable Long id, @RequestParam Long productId){
+        likeService.cancelLike(productId, id);
     }
 }
