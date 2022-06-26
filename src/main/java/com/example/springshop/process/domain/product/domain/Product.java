@@ -78,4 +78,8 @@ public class Product {
     public void productAddLike(){
         this.likeCount += 1;
     }
+
+    public void productCancelLike() {
+        this.likeCount -= 1;
+    }
 }
