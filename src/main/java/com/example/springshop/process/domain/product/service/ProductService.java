@@ -21,4 +21,11 @@ public class ProductService {
         productRepository.save(product);
 
     }
+
+    public void productAddLike(Long productId){
+        Product product = productRepository.findById(productId).orElseThrow(
+                () -> new IllegalArgumentException("상품이 없습니다."));
+        product.productAddLike();
+
+    }
 }

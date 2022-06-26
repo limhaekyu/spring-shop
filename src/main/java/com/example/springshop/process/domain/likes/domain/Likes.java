@@ -32,6 +32,8 @@ public class Likes {
     private User user;
 
     public Likes(Product product, User user) {
+        this.product = product;
+        this.user = user;
     }
 
 }

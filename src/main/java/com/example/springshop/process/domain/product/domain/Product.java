@@ -12,6 +12,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
@@ -23,6 +25,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Table(name = "product")
+@DynamicInsert
 public class Product {
 
     @Id
@@ -36,8 +39,9 @@ public class Product {
     @Column(name = "category")
     private CategoryType category;
 
-    @Column(name = "like_count",columnDefinition = "long default 0L")
-    private Long likeCount;
+    @Column(name = "like_count")
+    @ColumnDefault("0")
+    private Integer likeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -69,5 +73,9 @@ public class Product {
         this.productName = productName;
         this.category = category;
         this.user = user;
+    }
+
+    public void productAddLike(){
+        this.likeCount += 1;
     }
 }

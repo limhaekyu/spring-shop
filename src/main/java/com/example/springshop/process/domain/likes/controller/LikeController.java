@@ -12,7 +12,7 @@ public class LikeController {
 
     @PostMapping("/api/shop/{id}/like")
     public void addLike(@PathVariable Long id, @RequestParam Long productId){
-        likeService.addLike(id, productId);
+        likeService.addLike(productId, id);
     }
 
     @DeleteMapping("/api/shop/like")
