@@ -36,7 +36,7 @@ public class Product {
     private CategoryType category;
 
     @Column(name = "like_count")
-    private int likeCount;
+    private Long likeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
