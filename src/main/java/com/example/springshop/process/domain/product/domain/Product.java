@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class Product {
     @Column(name = "category")
     private CategoryType category;
 
-    @Column(name = "like_count")
+    @Column(name = "like_count",columnDefinition = "long default 0L")
     private Long likeCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -64,4 +65,9 @@ public class Product {
     private List<ProductImage> productImage = new ArrayList<>();
 
 
+    public Product(String productName, CategoryType category, User user) {
+        this.productName = productName;
+        this.category = category;
+        this.user = user;
+    }
 }
