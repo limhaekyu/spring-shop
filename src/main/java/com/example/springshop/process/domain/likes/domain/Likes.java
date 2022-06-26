@@ -31,4 +31,7 @@ public class Likes {
     @JsonManagedReference
     private User user;
 
+    public Likes(Product product, User user) {
+    }
+
 }
