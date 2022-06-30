@@ -4,6 +4,7 @@ import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.product.dto.CreateProductDto;
 import com.example.springshop.process.domain.product.repository.ProductRepository;
 import com.example.springshop.process.domain.user.repository.UserRepository;
+import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +12,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
-    private final UserRepository userRepository;
+    private final UserService userSerivce;
 
     public void createProduct(Long userId, CreateProductDto createProductDto){
-        Product product = new Product(createProductDto.getProductName(), createProductDto.getCategory(), createProductDto.getProductPrice(), userRepository.findById(userId).orElseThrow(
-                () -> new IllegalArgumentException("없는 유저입니다.")
-        ));
+        Product product = new Product(createProductDto.getProductName(), createProductDto.getCategory(), createProductDto.getProductPrice(), userSerivce.findUserById(userId));
 
         productRepository.save(product);
 

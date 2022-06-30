@@ -35,6 +35,6 @@ public class WishService {
 
     public List<Wish> findUserWishList(Long id) {
         User user = userService.findUserById(id);
-        return null;
+        return null;d
     }
 }

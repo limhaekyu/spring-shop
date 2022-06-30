@@ -22,15 +22,11 @@ public class UserService {
     }
 
     public void deleteUser(Long id) {
-        userRepository.delete(
-                userRepository.findById(id).orElseThrow(
-                        () -> new IllegalArgumentException("없는 유저입니다.")));
+        userRepository.delete(findUserById(id));
     }
 
     public void updateUserInfo(Long id, UpdateUserInfoDto updateUserDto) {
-        User user = userRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("없는 유저입니다."));
-
+        User user = findUserById(id);
         user.updateUserInfo(
                 updateUserDto.getUserName(),
                 updateUserDto.getPassword()
@@ -40,12 +36,11 @@ public class UserService {
     public User findUserById(Long id){
         User user = userRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("없는 유저입니다."));
-
         return user;
     }
 
     public void depositUserAccount(Long id, DepositAmountDto depositAmountDto) {
-        User user = userRepository.findById(id).orElseThrow( () -> new IllegalArgumentException("없는 유저입니다."));
+        User user = findUserById(id);
         user.depositUserAccount(user.getAccountAmount() + depositAmountDto.getDepositAmount());
     }
 }

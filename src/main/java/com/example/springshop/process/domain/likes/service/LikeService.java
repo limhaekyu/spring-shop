@@ -7,6 +7,7 @@ import com.example.springshop.process.domain.product.repository.ProductRepositor
 import com.example.springshop.process.domain.product.service.ProductService;
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.repository.UserRepository;
+import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,16 +18,12 @@ import java.util.List;
 public class LikeService {
 
     private final LikeRepository likeRepository;
-    private final UserRepository userRepository;
-    private final ProductRepository productRepository;
     private final ProductService productService;
+    private final UserService userService;
 
     public void addLike(Long productId, Long userId) {
-        Product product = productRepository.findById(productId).orElseThrow(
-                () -> new IllegalArgumentException("없는 상품입니다."));
-
-        User user = userRepository.findById(userId).orElseThrow(
-                () -> new IllegalArgumentException("없는 유저입니다."));
+        Product product = productService.findProductByid(productId);
+        User user = userService.findUserById(userId);
 
         Likes like = new Likes(product, user);
 
@@ -38,8 +35,8 @@ public class LikeService {
     public void cancelLike(Long productId, Long userId) {
 
         Likes like = likeRepository.findByProductAndUser(
-                productRepository.findById(productId).orElseThrow(() -> new IllegalArgumentException("없는 상품입니다.")),
-                userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("없는 유저입니다.")));
+                productService.findProductByid(productId),
+                userService.findUserById(userId));
 
         productService.productCencelLike(productId);
         likeRepository.delete(like);
@@ -47,7 +44,7 @@ public class LikeService {
 
     public List<Likes> selectUserLike(Long userId) {
         List<Likes> userLikesList = likeRepository.findAllByUser(
-                userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("없는 유저입니다.")));
+                userService.findUserById(userId));
         return userLikesList;
     }
 }
