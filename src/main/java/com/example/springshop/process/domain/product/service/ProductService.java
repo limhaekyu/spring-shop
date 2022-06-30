@@ -14,7 +14,7 @@ public class ProductService {
     private final UserRepository userRepository;
 
     public void createProduct(Long userId, CreateProductDto createProductDto){
-        Product product = new Product(createProductDto.getProductName(), createProductDto.getCategory(), userRepository.findById(userId).orElseThrow(
+        Product product = new Product(createProductDto.getProductName(), createProductDto.getCategory(), createProductDto.getProductPrice(), userRepository.findById(userId).orElseThrow(
                 () -> new IllegalArgumentException("없는 유저입니다.")
         ));
 

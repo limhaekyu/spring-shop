@@ -27,7 +27,6 @@ import java.util.List;
 @Table(name = "product")
 @DynamicInsert
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
@@ -38,6 +37,9 @@ public class Product {
 
     @Column(name = "category")
     private CategoryType category;
+
+    @Column(name = "product_price")
+    private Long productPrice;
 
     @Column(name = "like_count")
     @ColumnDefault("0")
@@ -69,9 +71,10 @@ public class Product {
     private List<ProductImage> productImage = new ArrayList<>();
 
 
-    public Product(String productName, CategoryType category, User user) {
+    public Product(String productName, CategoryType category,Long productPrice, User user) {
         this.productName = productName;
         this.category = category;
+        this.productPrice = productPrice;
         this.user = user;
     }
 

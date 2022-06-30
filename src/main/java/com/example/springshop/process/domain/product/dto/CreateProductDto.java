@@ -13,4 +13,5 @@ public class CreateProductDto {
 
     private CategoryType category;
 
+    private Long productPrice;
 }
