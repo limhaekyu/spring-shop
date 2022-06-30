@@ -41,9 +41,9 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "user_account")
+    @Column(name = "account_amount")
     @ColumnDefault("0L")
-    private Long userAccount;
+    private Long accountAmount;
 
     @JsonBackReference
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -84,6 +84,9 @@ public class User {
         this.password = passowrd;
     }
 
+    public void depositUserAccount(Long accountAmount){
+        this.accountAmount = accountAmount;
+    }
 
 
 

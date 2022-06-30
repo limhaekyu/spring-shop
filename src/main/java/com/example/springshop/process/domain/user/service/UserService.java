@@ -2,13 +2,12 @@ package com.example.springshop.process.domain.user.service;
 
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.dto.CreateUserDto;
+import com.example.springshop.process.domain.user.dto.DepositAmountDto;
 import com.example.springshop.process.domain.user.dto.UpdateUserInfoDto;
 import com.example.springshop.process.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional
@@ -45,4 +44,8 @@ public class UserService {
         return user;
     }
 
+    public void depositUserAccount(Long id, DepositAmountDto depositAmountDto) {
+        User user = userRepository.findById(id).orElseThrow( () -> new IllegalArgumentException("없는 유저입니다."));
+        user.depositUserAccount(user.getAccountAmount() + depositAmountDto.getDepositAmount());
+    }
 }
