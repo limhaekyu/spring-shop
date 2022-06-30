@@ -2,6 +2,7 @@ package com.example.springshop.process.domain.likes.domain;
 
 import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.user.domain.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +22,7 @@ public class Likes {
     @Column(name = "like_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     @JsonManagedReference
     private Product product;

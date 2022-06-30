@@ -21,7 +21,7 @@ public class LikeService {
     private final ProductRepository productRepository;
     private final ProductService productService;
 
-    public void addLike(Long productId, Long userId){
+    public void addLike(Long productId, Long userId) {
         Product product = productRepository.findById(productId).orElseThrow(
                 () -> new IllegalArgumentException("없는 상품입니다."));
 
@@ -35,11 +35,11 @@ public class LikeService {
 
     }
 
-    public void cancelLike(Long productId, Long userId){
+    public void cancelLike(Long productId, Long userId) {
 
         Likes like = likeRepository.findByProductAndUser(
-                productRepository.findById(productId).orElseThrow(()->new IllegalArgumentException("없는 상품입니다.")),
-                userRepository.findById(userId).orElseThrow(()->new IllegalArgumentException("없는 유저입니다.")));
+                productRepository.findById(productId).orElseThrow(() -> new IllegalArgumentException("없는 상품입니다.")),
+                userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("없는 유저입니다.")));
 
         productService.productCencelLike(productId);
         likeRepository.delete(like);
