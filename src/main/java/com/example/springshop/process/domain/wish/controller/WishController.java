@@ -1,8 +1,11 @@
 package com.example.springshop.process.domain.wish.controller;
 
+import com.example.springshop.process.domain.wish.domain.Wish;
 import com.example.springshop.process.domain.wish.service.WishService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,6 +20,10 @@ public class WishController {
     @PostMapping("/api/shop/{id}/wish")
     public void addWish(@PathVariable Long id, @RequestParam Long productId){
         wishService.addWish(id, productId);
+    }
 
+    @GetMapping("/api/shop/{id}/wish")
+    public List<Wish> findUserWishList(@PathVariable Long id){
+        return wishService.findUserWishList(id);
     }
 }

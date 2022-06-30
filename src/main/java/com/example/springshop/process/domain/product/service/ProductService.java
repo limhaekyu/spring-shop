@@ -23,15 +23,18 @@ public class ProductService {
     }
 
     public void productAddLike(Long productId){
-        Product product = productRepository.findById(productId).orElseThrow(
-                () -> new IllegalArgumentException("상품이 없습니다."));
+        Product product = findProductByid(productId);
         product.productAddLike();
 
     }
 
     public void productCencelLike(Long productId) {
-        Product product = productRepository.findById(productId).orElseThrow(
-                () -> new IllegalArgumentException("상품이 없습니다."));
+        Product product = findProductByid(productId);
         product.productCancelLike();
+    }
+
+    public Product findProductByid(Long productId){
+        return productRepository.findById(productId).orElseThrow(
+                () -> new IllegalArgumentException("상품이 없습니다."));
     }
 }
