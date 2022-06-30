@@ -30,4 +30,8 @@ public class Wish {
     @JsonManagedReference
     private User user;
 
+    public Wish(User user, Product product) {
+        this.user = user;
+        this.product = product;
+    }
 }
