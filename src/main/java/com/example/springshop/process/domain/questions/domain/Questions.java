@@ -39,4 +39,9 @@ public class Questions {
     private List<Answers> answer = new ArrayList<>();
 
 
+    public Questions(String questionTitle, String questionContents, User user) {
+        this.questionTitle = questionTitle;
+        this.questionContents = questionContents;
+        this.user = user;
+    }
 }
