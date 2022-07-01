@@ -2,6 +2,7 @@ package com.example.springshop.process.domain.wish.controller;
 
 import com.example.springshop.process.domain.wish.domain.Wish;
 import com.example.springshop.process.domain.wish.service.WishService;
+import com.example.springshop.process.global.response.ApiResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,8 @@ public class WishController {
     }
 
     @GetMapping("/api/shop/{id}/wish")
-    public List<Wish> findUserWishList(@PathVariable Long id){
-        return wishService.findUserWishList(id);
+    public ApiResponseDto<List<Wish>> findUserWishList(@PathVariable Long id){
+        List<Wish> wishList = wishService.findUserWishList(id);
+        return ApiResponseDto.of(wishList);
     }
 }

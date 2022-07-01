@@ -7,6 +7,7 @@ import com.example.springshop.process.domain.user.dto.CreateUserDto;
 import com.example.springshop.process.domain.user.dto.DepositAmountDto;
 import com.example.springshop.process.domain.user.dto.UpdateUserInfoDto;
 import com.example.springshop.process.domain.user.service.UserService;
+import com.example.springshop.process.global.response.ApiResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,8 +34,9 @@ public class UserController {
     }
 
     @GetMapping("/api/shop/{id}/user")
-    public User findUser(@PathVariable Long id){
-        return userService.findUserById(id);
+    public ApiResponseDto<User> findUser(@PathVariable Long id){
+        User user = userService.findUserById(id);
+        return ApiResponseDto.of(user);
     }
 
     @PostMapping("/api/shop/{id}/user/deposit")
