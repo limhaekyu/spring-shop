@@ -6,6 +6,10 @@ import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.wish.domain.Wish;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface WishRepository extends JpaRepository<Wish, Long> {
     boolean existsByUserAndProduct(User user, Product product);
+
+    List<Wish> findAllByUser(User user);
 }

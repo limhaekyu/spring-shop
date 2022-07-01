@@ -8,6 +8,7 @@ import com.example.springshop.process.domain.productReview.domain.ProductReview;
 import com.example.springshop.process.domain.questions.domain.Questions;
 import com.example.springshop.process.domain.wish.domain.Wish;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "user")
 @DynamicInsert
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

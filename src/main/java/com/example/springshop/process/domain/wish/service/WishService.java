@@ -10,11 +10,13 @@ import com.example.springshop.process.domain.wish.domain.Wish;
 import com.example.springshop.process.domain.wish.repository.WishRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class WishService {
 
     private final WishRepository wishRepository;
@@ -35,6 +37,7 @@ public class WishService {
 
     public List<Wish> findUserWishList(Long id) {
         User user = userService.findUserById(id);
-        return null;d
+        List<Wish> wishList = wishRepository.findAllByUser(user);
+        return wishList;
     }
 }
