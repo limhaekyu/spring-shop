@@ -38,4 +38,8 @@ public class Answers {
         this.question = question;
         this.user = user;
     }
+
+    public void updateAnswer(String answerContents) {
+        this.answerContents = answerContents;
+    }
 }

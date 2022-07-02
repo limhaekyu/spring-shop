@@ -2,6 +2,7 @@ package com.example.springshop.process.domain.answers.service;
 
 import com.example.springshop.process.domain.answers.domain.Answers;
 import com.example.springshop.process.domain.answers.dto.CreateAnswerDto;
+import com.example.springshop.process.domain.answers.dto.UpdateAnswerDto;
 import com.example.springshop.process.domain.answers.repository.AnswerRepository;
 import com.example.springshop.process.domain.questions.domain.Questions;
 import com.example.springshop.process.domain.questions.service.QuestionService;
@@ -27,6 +28,13 @@ public class AnswerService {
         answerRepository.save(answer);
     }
 
+    public Answers findAnswerById(Long answerId){
+        Answers answer = answerRepository.findById(answerId).orElseThrow(
+                () -> new IllegalArgumentException("없는 답변입니다.")
+        );
+        return answer;
+    }
+
     public List<Answers> selectUserAnswer(Long userId) {
         User user = userService.findUserById(userId);
         List<Answers> answerList = answerRepository.findAllByUser(user);
@@ -37,5 +45,14 @@ public class AnswerService {
         Questions question = questionService.findQuestionById(questionId);
         List<Answers> answerList = answerRepository.findAllByQuestion(question);
         return answerList;
+    }
+
+    public void updateAnswer(Long userId, Long answerId, UpdateAnswerDto updateAnswerDto) {
+        User user = userService.findUserById(userId);
+        Answers answer = findAnswerById(answerId);
+        if (answer.getUser() == user){
+            answer.updateAnswer(updateAnswerDto.getAnswerContents());
+            answerRepository.save(answer);
+        }
     }
 }
