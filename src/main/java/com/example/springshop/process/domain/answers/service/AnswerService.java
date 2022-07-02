@@ -33,4 +33,9 @@ public class AnswerService {
         return answerList;
     }
 
+    public List<Answers> selectAnswerToQuestion(Long questionId) {
+        Questions question = questionService.findQuestionById(questionId);
+        List<Answers> answerList = answerRepository.findAllByQuestion(question);
+        return answerList;
+    }
 }

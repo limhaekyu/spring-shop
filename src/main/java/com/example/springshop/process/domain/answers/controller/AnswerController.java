@@ -24,8 +24,13 @@ public class AnswerController {
 
     @GetMapping("/api/shop/{userId}/answer")
     public ApiResponseDto<List<Answers>> selectUserAnswer(@PathVariable Long userId){
-        List<Answers> answerList = answerService.selectUserAnswer(userId);
-        return ApiResponseDto.of(answerList);
+        List<Answers> userAnswerList = answerService.selectUserAnswer(userId);
+        return ApiResponseDto.of(userAnswerList);
     }
 
+    @GetMapping("/api/shop/answer")
+    public ApiResponseDto<List<Answers>> selectProductAnswer(@RequestParam Long questionId){
+        List<Answers> answerToQuestionList = answerService.selectAnswerToQuestion(questionId);
+        return ApiResponseDto.of(answerToQuestionList);
+    }
 }
