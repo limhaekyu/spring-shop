@@ -10,6 +10,8 @@ import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AnswerService {
@@ -24,4 +26,11 @@ public class AnswerService {
         Answers answer = new Answers(createAnswerDto.getAnswerContents(), question, user);
         answerRepository.save(answer);
     }
+
+    public List<Answers> selectUserAnswer(Long userId) {
+        User user = userService.findUserById(userId);
+        List<Answers> answerList = answerRepository.findAllByUser(user);
+        return answerList;
+    }
+
 }
