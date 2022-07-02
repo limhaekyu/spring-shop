@@ -2,6 +2,7 @@ package com.example.springshop.process.domain.questions.service;
 
 import com.example.springshop.process.domain.questions.domain.Questions;
 import com.example.springshop.process.domain.questions.dto.AddQuestionDto;
+import com.example.springshop.process.domain.questions.dto.UpdateQuestionDto;
 import com.example.springshop.process.domain.questions.repository.QuestionRepository;
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.service.UserService;
@@ -17,8 +18,8 @@ public class QuestionService {
     private final QuestionRepository questionRepository;
     private final UserService userService;
 
-    public void addQuestion(Long id, AddQuestionDto addQuestionDto) {
-        User user = userService.findUserById(id);
+    public void addQuestion(Long userId, AddQuestionDto addQuestionDto) {
+        User user = userService.findUserById(userId);
         Questions questions = new Questions(addQuestionDto.getQuestionTitle(), addQuestionDto.getQuestionContents(), user);
         questionRepository.save(questions);
     }
@@ -28,9 +29,21 @@ public class QuestionService {
         return allQuestionList;
     }
 
-    public List<Questions> selectUserQuestion(Long id) {
-        User user = userService.findUserById(id);
+    public List<Questions> selectUserQuestion(Long userId) {
+        User user = userService.findUserById(userId);
         List<Questions> userQuestionList = questionRepository.findAllByUser(user);
         return userQuestionList;
+    }
+
+
+    public void updateQuestion(Long userId, Long questionId, UpdateQuestionDto updateQuestionDto) {
+        User user = userService.findUserById(userId);
+
+    }
+
+    public Questions findQuestionById(Long questionId){
+        Questions question = questionRepository.findById(questionId).orElseThrow(
+                () -> new IllegalArgumentException("없는 질문입니다."));
+        return question;
     }
 }
