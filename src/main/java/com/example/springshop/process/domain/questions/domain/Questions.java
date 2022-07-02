@@ -44,4 +44,9 @@ public class Questions {
         this.questionContents = questionContents;
         this.user = user;
     }
+
+    public void updateQuestion(String questionTitle, String questionContents) {
+        this.questionTitle = questionTitle;
+        this.questionContents = questionContents;
+    }
 }

@@ -38,6 +38,12 @@ public class QuestionService {
 
     public void updateQuestion(Long userId, Long questionId, UpdateQuestionDto updateQuestionDto) {
         User user = userService.findUserById(userId);
+        Questions question = findQuestionById(questionId);
+        if (question.getUser() == user){
+            question.updateQuestion(updateQuestionDto.getQuestionTitle(),updateQuestionDto.getQuestionContents());
+
+            questionRepository.save(question);
+        }
 
     }
 
