@@ -33,4 +33,9 @@ public class Answers {
     @JsonManagedReference
     private User user;
 
+    public Answers(String answerContents, Questions question, User user) {
+        this.answerContents = answerContents;
+        this.question = question;
+        this.user = user;
+    }
 }
