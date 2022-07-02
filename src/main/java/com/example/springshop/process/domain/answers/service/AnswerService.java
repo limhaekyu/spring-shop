@@ -55,4 +55,13 @@ public class AnswerService {
             answerRepository.save(answer);
         }
     }
+
+    public void deleteAnswer(Long userId, Long answerId){
+        User user = userService.findUserById(userId);
+        Answers answer = findAnswerById(answerId);
+        if(answer.getUser() == user){
+            answerRepository.delete(answer);
+        }
+    }
+
 }

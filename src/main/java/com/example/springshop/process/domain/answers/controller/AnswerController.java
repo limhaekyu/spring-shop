@@ -39,4 +39,9 @@ public class AnswerController {
     public void updateAnswer(@PathVariable Long userId, @RequestParam Long answerId, @RequestBody UpdateAnswerDto updateAnswerDto){
         answerService.updateAnswer(userId, answerId, updateAnswerDto);
     }
+
+    @DeleteMapping("/api/shop/{userId}/answer")
+    public void deleteAnswer(@PathVariable Long userId, @RequestParam Long answerId){
+        answerService.deleteAnswer(userId, answerId);
+    }
 }
