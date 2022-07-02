@@ -24,7 +24,13 @@ public class QuestionService {
     }
 
     public List<Questions> selectAllQuestion() {
-        List<Questions> questionList = questionRepository.findAll();
-        return questionList;
+        List<Questions> allQuestionList = questionRepository.findAll();
+        return allQuestionList;
+    }
+
+    public List<Questions> selectUserQuestion(Long id) {
+        User user = userService.findUserById(id);
+        List<Questions> userQuestionList = questionRepository.findAllByUser(user);
+        return userQuestionList;
     }
 }

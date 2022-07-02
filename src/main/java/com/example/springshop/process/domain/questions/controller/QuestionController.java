@@ -23,7 +23,15 @@ public class QuestionController {
 
     @GetMapping("api/shop/question")
     public ApiResponseDto<List<Questions>> selectAllQuestion(){
-        List<Questions> questionList = questionService.selectAllQuestion();
-        return ApiResponseDto.of(questionList);
+        List<Questions> allQuestionList = questionService.selectAllQuestion();
+        return ApiResponseDto.of(allQuestionList);
     }
+
+    @GetMapping("api/shop/{id}/question")
+    public ApiResponseDto<List<Questions>> selectUserQuestion(@PathVariable Long id){
+        List<Questions> userQuestionList = questionService.selectUserQuestion(id);
+        return ApiResponseDto.of(userQuestionList);
+    }
+
+
 }
