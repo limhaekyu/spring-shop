@@ -52,4 +52,13 @@ public class QuestionService {
                 () -> new IllegalArgumentException("없는 질문입니다."));
         return question;
     }
+
+    public void deleteQuestion(Long userId, Long questionId) {
+        User user = userService.findUserById(userId);
+        Questions question = findQuestionById(questionId);
+        if(question.getUser() == user){
+            questionRepository.delete(question);
+        }
+
+    }
 }

@@ -37,7 +37,11 @@ public class QuestionController {
     @PutMapping("api/shop/{userId}/question")
     public void updateUserQuestion(@PathVariable Long userId ,@RequestParam Long questionId , @RequestBody UpdateQuestionDto updateQuestionDto){
         questionService.updateQuestion(userId, questionId, updateQuestionDto);
+    }
 
+    @DeleteMapping("api/shop/{userId}/question")
+    public void deleteQuestion(@PathVariable Long userId, @RequestParam Long questionId){
+        questionService.deleteQuestion(userId, questionId);
     }
 
 
