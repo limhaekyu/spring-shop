@@ -21,7 +21,7 @@ public class LikeService {
     private final ProductService productService;
     private final UserService userService;
 
-    public void addLike(Long productId, Long userId) {
+    public void addLike(Long userId, Long productId) {
         Product product = productService.findProductByid(productId);
         User user = userService.findUserById(userId);
 
@@ -32,7 +32,7 @@ public class LikeService {
 
     }
 
-    public void cancelLike(Long productId, Long userId) {
+    public void cancelLike(Long userId, Long productId) {
 
         Likes like = likeRepository.findByProductAndUser(
                 productService.findProductByid(productId),

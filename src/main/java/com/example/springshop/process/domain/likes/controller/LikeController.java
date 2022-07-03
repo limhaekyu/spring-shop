@@ -14,19 +14,19 @@ public class LikeController {
 
     private final LikeService likeService;
 
-    @PostMapping("/api/shop/{id}/like")
-    public void addLike(@PathVariable Long id, @RequestParam Long productId){
-        likeService.addLike(productId, id);
+    @PostMapping("/api/shop/{userId}/like")
+    public void addLike(@PathVariable Long userId, @RequestParam Long productId){
+        likeService.addLike(userId, productId);
     }
 
-    @DeleteMapping("/api/shop/{id}/like")
-    public void cancelLike(@PathVariable Long id, @RequestParam Long productId){
-        likeService.cancelLike(productId, id);
+    @DeleteMapping("/api/shop/{userId}/like")
+    public void cancelLike(@PathVariable Long userId, @RequestParam Long productId){
+        likeService.cancelLike(userId, productId);
     }
 
-    @GetMapping("/api/shop/{id}/like")
-    public ApiResponseDto<List<Likes>> selectUserLike(@PathVariable Long id){
-        List<Likes> likeList = likeService.selectUserLike(id);
+    @GetMapping("/api/shop/{userId}/like")
+    public ApiResponseDto<List<Likes>> selectUserLike(@PathVariable Long userId){
+        List<Likes> likeList = likeService.selectUserLike(userId);
         return ApiResponseDto.of(likeList);
     }
 }

@@ -23,25 +23,25 @@ public class UserController {
         userService.createtUser(createUserDto);
     }
 
-    @DeleteMapping("/api/shop/{id}/user")
-    public void deleteUser(@PathVariable Long id){
-        userService.deleteUser(id);
+    @DeleteMapping("/api/shop/{userId}/user")
+    public void deleteUser(@PathVariable Long userId){
+        userService.deleteUser(userId);
     }
 
-    @PutMapping("/api/shop/{id}/user")
-    public void updateUser(@PathVariable Long id, @RequestBody UpdateUserInfoDto updateUserDto){
-        userService.updateUserInfo(id, updateUserDto);
+    @PutMapping("/api/shop/{userId}/user")
+    public void updateUser(@PathVariable Long userId, @RequestBody UpdateUserInfoDto updateUserDto){
+        userService.updateUserInfo(userId, updateUserDto);
     }
 
-    @GetMapping("/api/shop/{id}/user")
-    public ApiResponseDto<User> findUser(@PathVariable Long id){
-        User user = userService.findUserById(id);
+    @GetMapping("/api/shop/{userId}/user")
+    public ApiResponseDto<User> findUser(@PathVariable Long userId){
+        User user = userService.findUserById(userId);
         return ApiResponseDto.of(user);
     }
 
-    @PostMapping("/api/shop/{id}/user/deposit")
-    public void depositUserAccount(@PathVariable Long id, @RequestBody DepositAmountDto depositAmountDto){
-        userService.depositUserAccount(id, depositAmountDto);
+    @PostMapping("/api/shop/{userId}/user/deposit")
+    public void depositUserAccount(@PathVariable Long userId, @RequestBody DepositAmountDto depositAmountDto){
+        userService.depositUserAccount(userId, depositAmountDto);
 
     }
 

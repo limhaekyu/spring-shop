@@ -18,14 +18,14 @@ public class WishController {
 //    R : 위시리스트 불러오기
 //    U : X
 //    D : 위시리스트 삭제
-    @PostMapping("/api/shop/{id}/wish")
-    public void addWish(@PathVariable Long id, @RequestParam Long productId){
-        wishService.addWish(id, productId);
+    @PostMapping("/api/shop/{userId}/wish")
+    public void addWish(@PathVariable Long userId, @RequestParam Long productId){
+        wishService.addWish(userId, productId);
     }
 
-    @GetMapping("/api/shop/{id}/wish")
-    public ApiResponseDto<List<Wish>> findUserWishList(@PathVariable Long id){
-        List<Wish> wishList = wishService.findUserWishList(id);
+    @GetMapping("/api/shop/{userId}/wish")
+    public ApiResponseDto<List<Wish>> findUserWishList(@PathVariable Long userId){
+        List<Wish> wishList = wishService.findUserWishList(userId);
         return ApiResponseDto.of(wishList);
     }
 }

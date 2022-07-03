@@ -16,9 +16,9 @@ public class ProductController {
     private final ProductService productService;
 
     // CRUD
-    @PostMapping("/api/shop/{id}/product")
-    public void createProduct(@PathVariable Long id, @RequestBody @Valid CreateProductDto createProductDto){
-        productService.createProduct(id, createProductDto);
+    @PostMapping("/api/shop/{userId}/product")
+    public void createProduct(@PathVariable Long userId, @RequestBody @Valid CreateProductDto createProductDto){
+        productService.createProduct(userId, createProductDto);
     }
 
 }

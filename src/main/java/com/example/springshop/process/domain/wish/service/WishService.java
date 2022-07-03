@@ -23,8 +23,8 @@ public class WishService {
     private final UserService userService;
     private final ProductService productService;
 
-    public void addWish(Long id, Long productId){
-        User user = userService.findUserById(id);
+    public void addWish(Long userId, Long productId){
+        User user = userService.findUserById(userId);
         Product product = productService.findProductByid(productId);
         if (wishRepository.existsByUserAndProduct(user, product)){
             System.out.println("상품이 중복됩니다.");
@@ -35,8 +35,8 @@ public class WishService {
 
     }
 
-    public List<Wish> findUserWishList(Long id) {
-        User user = userService.findUserById(id);
+    public List<Wish> findUserWishList(Long userId) {
+        User user = userService.findUserById(userId);
         List<Wish> wishList = wishRepository.findAllByUser(user);
         return wishList;
     }
