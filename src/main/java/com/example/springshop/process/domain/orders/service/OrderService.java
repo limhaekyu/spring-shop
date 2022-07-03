@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -30,5 +32,11 @@ public class OrderService {
             userService.orderPayment(userId, product.getUser().getId() ,product.getProductPrice());
             orderRepository.save(order);
         }
+    }
+
+    public List<Orders> findUserOrder(Long userId) {
+        User user = userService.findUserById(userId);
+        List<Orders> orderList = orderRepository.findAllByUser(user);
+        return orderList;
     }
 }
