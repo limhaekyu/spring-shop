@@ -8,6 +8,7 @@ import com.example.springshop.process.domain.product.service.ProductService;
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,5 +39,13 @@ public class OrderService {
         User user = userService.findUserById(userId);
         List<Orders> orderList = orderRepository.findAllByUser(user);
         return orderList;
+    }
+
+    public void cancelUserOrder(Long userId, Long orderId) {
+        User user = userService.findUserById(userId);
+        Orders order = orderRepository.findByIdAndUser(orderId, user);
+        if (user == order.getUser()) {
+            orderRepository.delete(order);
+        }
     }
 }

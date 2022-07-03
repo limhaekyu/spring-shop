@@ -24,4 +24,9 @@ public class OrderController {
         List<Orders> orderList = orderService.findUserOrder(userId);
         return ApiResponseDto.of(orderList);
     }
+
+    @DeleteMapping("/api/shop/{userId}/order")
+    public void cancelUserOrder(@PathVariable Long userId, @RequestParam Long orderId){
+        orderService.cancelUserOrder(userId, orderId);
+    }
 }
