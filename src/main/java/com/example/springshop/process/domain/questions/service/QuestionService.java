@@ -8,11 +8,13 @@ import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class QuestionService {
 
     private final QuestionRepository questionRepository;

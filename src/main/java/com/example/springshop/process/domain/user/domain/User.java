@@ -91,5 +91,7 @@ public class User {
     }
 
 
-
+    public void orderPayment(Long accountAmount) {
+        this.accountAmount = accountAmount;
+    }
 }

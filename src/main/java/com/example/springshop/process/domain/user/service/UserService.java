@@ -1,5 +1,7 @@
 package com.example.springshop.process.domain.user.service;
 
+import com.example.springshop.process.domain.product.domain.Product;
+import com.example.springshop.process.domain.product.service.ProductService;
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.dto.CreateUserDto;
 import com.example.springshop.process.domain.user.dto.DepositAmountDto;
@@ -42,5 +44,19 @@ public class UserService {
     public void depositUserAccount(Long userId, DepositAmountDto depositAmountDto) {
         User user = findUserById(userId);
         user.depositUserAccount(user.getAccountAmount() + depositAmountDto.getDepositAmount());
+    }
+
+    public void orderPayment(Long buyerId, Long sellerId ,Long productPrice) {
+        User buyer = findUserById(buyerId);
+        User seller = findUserById(sellerId);
+
+        if (buyer != seller){
+            if (buyer.getAccountAmount() >= productPrice){
+                buyer.orderPayment(buyer.getAccountAmount() - productPrice);
+                seller.orderPayment(seller.getAccountAmount() + productPrice);
+            }
+        }
+        userRepository.save(buyer);
+        userRepository.save(seller);
     }
 }

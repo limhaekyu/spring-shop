@@ -27,10 +27,10 @@ public class Orders {
     private String deliveryAddress;
 
     @Column(name = "status")
-    private OrderStatus status;
+    private OrderStatus status = OrderStatus.ORDER_CHECK;
 
     @Column(name = "ordered_at")
-    private LocalDateTime orderedAt;
+    private LocalDateTime orderedAt = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
@@ -42,4 +42,10 @@ public class Orders {
     @JsonManagedReference
     private User user;
 
+    public Orders(String deliveryAddress, Product product, User user) {
+        this.deliveryAddress = deliveryAddress;
+        this.status = status;
+        this.product = product;
+        this.user = user;
+    }
 }

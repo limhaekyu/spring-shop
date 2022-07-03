@@ -10,11 +10,13 @@ import com.example.springshop.process.domain.user.repository.UserRepository;
 import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class LikeService {
 
     private final LikeRepository likeRepository;
