@@ -28,4 +28,9 @@ public class WishController {
         List<Wish> wishList = wishService.findUserWishList(userId);
         return ApiResponseDto.of(wishList);
     }
+
+    @DeleteMapping("/api/shop/{userId}/wish")
+    public void deleteWish(@PathVariable Long userId, @RequestParam Long productId){
+        wishService.deleteWish(userId, productId);
+    }
 }

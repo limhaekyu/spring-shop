@@ -40,4 +40,17 @@ public class WishService {
         List<Wish> wishList = wishRepository.findAllByUser(user);
         return wishList;
     }
+
+    public void deleteWish(Long userId, Long productId) {
+        User user = userService.findUserById(userId);
+        Product product = productService.findProductByid(productId);
+        Wish wish = wishRepository.findAllByUserAndProduct(user, product);
+
+        if (wish != null){
+            wishRepository.delete(wish);
+        } else{
+            System.out.println("해당 상품이 위시리스트에 존재하지 않습니다.");
+        }
+
+    }
 }
