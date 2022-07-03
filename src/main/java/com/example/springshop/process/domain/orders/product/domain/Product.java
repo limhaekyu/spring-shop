@@ -1,4 +1,4 @@
-package com.example.springshop.process.domain.product.domain;
+package com.example.springshop.process.domain.orders.product.domain;
 
 import com.example.springshop.process.domain.likes.domain.Likes;
 import com.example.springshop.process.domain.model.CategoryType;
@@ -46,6 +46,10 @@ public class Product {
     @Column(name = "like_count")
     @ColumnDefault("0")
     private Integer likeCount;
+
+    @Column(name = "click_count")
+    @ColumnDefault("0")
+    private Integer clickCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

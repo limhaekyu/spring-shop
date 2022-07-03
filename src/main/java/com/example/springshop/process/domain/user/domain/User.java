@@ -3,7 +3,7 @@ package com.example.springshop.process.domain.user.domain;
 import com.example.springshop.process.domain.answers.domain.Answers;
 import com.example.springshop.process.domain.likes.domain.Likes;
 import com.example.springshop.process.domain.orders.domain.Orders;
-import com.example.springshop.process.domain.product.domain.Product;
+import com.example.springshop.process.domain.orders.product.domain.Product;
 import com.example.springshop.process.domain.productReview.domain.ProductReview;
 import com.example.springshop.process.domain.questions.domain.Questions;
 import com.example.springshop.process.domain.wish.domain.Wish;

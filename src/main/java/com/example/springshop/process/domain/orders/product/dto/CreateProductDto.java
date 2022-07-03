@@ -1,4 +1,4 @@
-package com.example.springshop.process.domain.product.dto;
+package com.example.springshop.process.domain.orders.product.dto;
 
 import com.example.springshop.process.domain.model.CategoryType;
 import lombok.AllArgsConstructor;

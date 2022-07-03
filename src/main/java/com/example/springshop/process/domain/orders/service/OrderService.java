@@ -3,12 +3,11 @@ package com.example.springshop.process.domain.orders.service;
 import com.example.springshop.process.domain.orders.domain.Orders;
 import com.example.springshop.process.domain.orders.dto.AddOrderDto;
 import com.example.springshop.process.domain.orders.repository.OrderRepository;
-import com.example.springshop.process.domain.product.domain.Product;
-import com.example.springshop.process.domain.product.service.ProductService;
+import com.example.springshop.process.domain.orders.product.domain.Product;
+import com.example.springshop.process.domain.orders.product.service.ProductService;
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,5 +46,9 @@ public class OrderService {
         if (user == order.getUser()) {
             orderRepository.delete(order);
         }
+    }
+
+    public Boolean checkUserOrderForProduct(User user, Product product) {
+        return orderRepository.existsByUserAndProduct(user, product);
     }
 }

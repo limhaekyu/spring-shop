@@ -1,7 +1,7 @@
-package com.example.springshop.process.domain.product.controller;
+package com.example.springshop.process.domain.orders.product.controller;
 
-import com.example.springshop.process.domain.product.dto.CreateProductDto;
-import com.example.springshop.process.domain.product.service.ProductService;
+import com.example.springshop.process.domain.orders.product.dto.CreateProductDto;
+import com.example.springshop.process.domain.orders.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,7 +1,5 @@
 package com.example.springshop.process.domain.user.service;
 
-import com.example.springshop.process.domain.product.domain.Product;
-import com.example.springshop.process.domain.product.service.ProductService;
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.dto.CreateUserDto;
 import com.example.springshop.process.domain.user.dto.DepositAmountDto;

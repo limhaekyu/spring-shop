@@ -1,10 +1,8 @@
 package com.example.springshop.process.domain.wish.service;
 
-import com.example.springshop.process.domain.product.domain.Product;
-import com.example.springshop.process.domain.product.repository.ProductRepository;
-import com.example.springshop.process.domain.product.service.ProductService;
+import com.example.springshop.process.domain.orders.product.domain.Product;
+import com.example.springshop.process.domain.orders.product.service.ProductService;
 import com.example.springshop.process.domain.user.domain.User;
-import com.example.springshop.process.domain.user.repository.UserRepository;
 import com.example.springshop.process.domain.user.service.UserService;
 import com.example.springshop.process.domain.wish.domain.Wish;
 import com.example.springshop.process.domain.wish.repository.WishRepository;

@@ -1,9 +1,8 @@
-package com.example.springshop.process.domain.product.service;
+package com.example.springshop.process.domain.orders.product.service;
 
-import com.example.springshop.process.domain.product.domain.Product;
-import com.example.springshop.process.domain.product.dto.CreateProductDto;
-import com.example.springshop.process.domain.product.repository.ProductRepository;
-import com.example.springshop.process.domain.user.repository.UserRepository;
+import com.example.springshop.process.domain.orders.product.dto.CreateProductDto;
+import com.example.springshop.process.domain.orders.product.repository.ProductRepository;
+import com.example.springshop.process.domain.orders.product.domain.Product;
 import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

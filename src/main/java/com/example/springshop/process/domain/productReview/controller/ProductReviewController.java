@@ -13,7 +13,7 @@ public class ProductReviewController {
     // CRUD
 
     // 구매한 사람들만 달 수 있게
-    @PostMapping("/api/shop/{userId}/productReview")
+    @PostMapping("/api/shop/{userId}/product-review")
     public void addProductReview(@PathVariable Long userId, @RequestParam Long productId, @RequestBody AddProductReviewDto addProductReviewDto) {
         productReviewService.addProductReview(userId, productId, addProductReviewDto);
     }

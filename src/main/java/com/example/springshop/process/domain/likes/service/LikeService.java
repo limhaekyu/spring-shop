@@ -2,11 +2,9 @@ package com.example.springshop.process.domain.likes.service;
 
 import com.example.springshop.process.domain.likes.domain.Likes;
 import com.example.springshop.process.domain.likes.repository.LikeRepository;
-import com.example.springshop.process.domain.product.domain.Product;
-import com.example.springshop.process.domain.product.repository.ProductRepository;
-import com.example.springshop.process.domain.product.service.ProductService;
+import com.example.springshop.process.domain.orders.product.domain.Product;
+import com.example.springshop.process.domain.orders.product.service.ProductService;
 import com.example.springshop.process.domain.user.domain.User;
-import com.example.springshop.process.domain.user.repository.UserRepository;
 import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
