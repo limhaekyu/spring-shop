@@ -37,4 +37,10 @@ public class ProductReviewService {
         }
 
     }
+
+    public List<ProductReview> selectUserReview(Long userId) {
+        User user = userService.findUserById(userId);
+        List<ProductReview> productReviewList = productReviewRepository.findAllByUser(user);
+        return productReviewList;
+    }
 }
