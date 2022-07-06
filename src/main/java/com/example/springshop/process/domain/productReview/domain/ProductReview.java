@@ -51,4 +51,9 @@ public class ProductReview {
         this.user = user;
         this.product = product;
     }
+
+    public void updateProductReview(String productReviewTitle, String productReviewContents) {
+        this.productReviewTitle = productReviewTitle;
+        this.productReviewContents = productReviewContents;
+    }
 }

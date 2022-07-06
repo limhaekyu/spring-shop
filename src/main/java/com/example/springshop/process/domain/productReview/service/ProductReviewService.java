@@ -6,6 +6,7 @@ import com.example.springshop.process.domain.orders.product.service.ProductServi
 import com.example.springshop.process.domain.orders.service.OrderService;
 import com.example.springshop.process.domain.productReview.domain.ProductReview;
 import com.example.springshop.process.domain.productReview.dto.AddProductReviewDto;
+import com.example.springshop.process.domain.productReview.dto.UpdateProductReviewDto;
 import com.example.springshop.process.domain.productReview.repository.ProductReviewRepository;
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.service.UserService;
@@ -48,5 +49,20 @@ public class ProductReviewService {
         Product product = productService.findProductByid(productId);
         List<ProductReview> productReviewList = productReviewRepository.findAllByProduct(product);
         return productReviewList;
+    }
+
+    public void updateProductReview(Long userId, Long productReviewId, UpdateProductReviewDto updateProductReviewDto) {
+        ProductReview productReview = findProductById(productReviewId);
+        if(productReview.getUser().getId() == userId){
+            productReview.updateProductReview(
+                    updateProductReviewDto.getProductReviewTitle(),
+                    updateProductReviewDto.getProductReviewContents());
+        }
+    }
+
+    public ProductReview findProductById(Long productReivewId){
+        return productReviewRepository.findById(productReivewId).orElseThrow(
+                () -> new IllegalArgumentException("없는 리뷰입니다.")
+        );
     }
 }

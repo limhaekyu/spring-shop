@@ -3,6 +3,7 @@ package com.example.springshop.process.domain.productReview.controller;
 import com.example.springshop.process.domain.orders.product.service.ProductService;
 import com.example.springshop.process.domain.productReview.domain.ProductReview;
 import com.example.springshop.process.domain.productReview.dto.AddProductReviewDto;
+import com.example.springshop.process.domain.productReview.dto.UpdateProductReviewDto;
 import com.example.springshop.process.domain.productReview.service.ProductReviewService;
 import com.example.springshop.process.global.response.ApiResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,11 @@ public class ProductReviewController {
     public ApiResponseDto<ProductReview> selectProductReview(@RequestParam Long productId){
         List<ProductReview> productReviewList = productReviewService.selectProductReview(productId);
         return ApiResponseDto.of(productReviewList);
+    }
+
+    @PutMapping("/api/shop/{userId}/product-review")
+    public void updateProductReview(@PathVariable Long userId, @RequestParam Long productReviewId, @RequestBody UpdateProductReviewDto updateProductReviewDto){
+        productReviewService.updateProductReview(userId, productReviewId, updateProductReviewDto);
     }
 
 }
