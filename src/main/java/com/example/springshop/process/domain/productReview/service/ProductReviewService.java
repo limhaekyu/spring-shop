@@ -60,9 +60,16 @@ public class ProductReviewService {
         }
     }
 
-    public ProductReview findProductById(Long productReivewId){
-        return productReviewRepository.findById(productReivewId).orElseThrow(
+    public ProductReview findProductById(Long productReviewId){
+        return productReviewRepository.findById(productReviewId).orElseThrow(
                 () -> new IllegalArgumentException("없는 리뷰입니다.")
         );
+    }
+
+    public void deleteProductReview(Long userId, Long productReviewId) {
+        ProductReview productReview = findProductById(productReviewId);
+        if (productReview.getUser().getId() == userId){
+            productReviewRepository.delete(productReview);
+        }
     }
 }

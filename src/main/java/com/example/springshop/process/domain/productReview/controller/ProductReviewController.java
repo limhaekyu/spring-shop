@@ -40,5 +40,10 @@ public class ProductReviewController {
         productReviewService.updateProductReview(userId, productReviewId, updateProductReviewDto);
     }
 
+    @DeleteMapping("/api/shop/{userId}/product-review")
+    public void deleteProductReview(@PathVariable Long userId, @RequestParam Long productReviewId){
+        productReviewService.deleteProductReview(userId, productReviewId);
+    }
+
 }
 
