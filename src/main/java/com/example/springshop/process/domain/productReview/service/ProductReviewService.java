@@ -43,4 +43,10 @@ public class ProductReviewService {
         List<ProductReview> productReviewList = productReviewRepository.findAllByUser(user);
         return productReviewList;
     }
+
+    public List<ProductReview> selectProductReview(Long productId) {
+        Product product = productService.findProductByid(productId);
+        List<ProductReview> productReviewList = productReviewRepository.findAllByProduct(product);
+        return productReviewList;
+    }
 }

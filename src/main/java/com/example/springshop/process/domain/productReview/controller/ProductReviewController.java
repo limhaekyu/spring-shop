@@ -1,5 +1,6 @@
 package com.example.springshop.process.domain.productReview.controller;
 
+import com.example.springshop.process.domain.orders.product.service.ProductService;
 import com.example.springshop.process.domain.productReview.domain.ProductReview;
 import com.example.springshop.process.domain.productReview.dto.AddProductReviewDto;
 import com.example.springshop.process.domain.productReview.service.ProductReviewService;
@@ -13,8 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductReviewController {
     private final ProductReviewService productReviewService;
-
-    // CRUD
+    // UD
 
     // 구매한 사람들만 달 수 있게
     @PostMapping("/api/shop/{userId}/product-review")
@@ -28,6 +28,11 @@ public class ProductReviewController {
         return ApiResponseDto.of(userProductReviewList);
     }
 
+    @GetMapping("/api/shop/product-review")
+    public ApiResponseDto<ProductReview> selectProductReview(@RequestParam Long productId){
+        List<ProductReview> productReviewList = productReviewService.selectProductReview(productId);
+        return ApiResponseDto.of(productReviewList);
+    }
 
 }
 
