@@ -34,4 +34,10 @@ public class ProductImage {
     @JsonManagedReference
     private Product product;
 
+    public ProductImage(String productOriginalImageName, String productChangedImageName, String productFileUrl, Product product) {
+        this.productOriginalImageName = productOriginalImageName;
+        this.productChangedImageName = productChangedImageName;
+        this.productFileUrl = productFileUrl;
+        this.product = product;
+    }
 }
