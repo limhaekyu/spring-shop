@@ -40,4 +40,10 @@ public class ProductImage {
         this.productFileUrl = productFileUrl;
         this.product = product;
     }
+
+    public void updateProductImage(String productOriginalImageName, String productChangedImageName, String productFileUrl) {
+        this.productOriginalImageName = productOriginalImageName;
+        this.productChangedImageName = productChangedImageName;
+        this.productFileUrl = productFileUrl;
+    }
 }

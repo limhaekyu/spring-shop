@@ -1,5 +1,6 @@
 package com.example.springshop.process.domain.productImage.controller;
 
+import com.example.springshop.process.domain.productImage.dto.UpdateProductImageDto;
 import com.example.springshop.process.domain.productImage.dto.UploadProductImageDto;
 import com.example.springshop.process.domain.productImage.service.ProductImageService;
 import lombok.RequiredArgsConstructor;
@@ -15,4 +16,11 @@ public class ProductImageController {
     public void uploadProductImage(@RequestParam Long productId, @RequestBody UploadProductImageDto uploadProductImageDto){
         productImageService.uploadProductImage(productId, uploadProductImageDto);
     }
+
+    @PutMapping("/api/shop/product-image")
+    public void updateProductImage(@RequestParam Long productId, @RequestBody UpdateProductImageDto updateProductImageDto){
+        productImageService.updateProductImage(productId, updateProductImageDto);
+    }
+
+    
 }

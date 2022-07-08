@@ -3,6 +3,7 @@ package com.example.springshop.process.domain.productImage.service;
 import com.example.springshop.process.domain.orders.product.domain.Product;
 import com.example.springshop.process.domain.orders.product.service.ProductService;
 import com.example.springshop.process.domain.productImage.domain.ProductImage;
+import com.example.springshop.process.domain.productImage.dto.UpdateProductImageDto;
 import com.example.springshop.process.domain.productImage.dto.UploadProductImageDto;
 import com.example.springshop.process.domain.productImage.repository.ProductImageRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,4 +25,18 @@ public class ProductImageService {
         );
         productImageRepository.save(productImage);
     }
+
+    public void updateProductImage(Long productId, UpdateProductImageDto updateProductImageDto) {
+        Product product = productService.findProductByid(productId);
+        ProductImage productImage = productImageRepository.findByProduct(product);
+        productImage.updateProductImage(
+                updateProductImageDto.getProductOriginalImageName(),
+                updateProductImageDto.getProductChangedImageName(),
+                updateProductImageDto.getProductFileUrl()
+        );
+        productImageRepository.save(productImage);
+
+    }
+
+
 }
