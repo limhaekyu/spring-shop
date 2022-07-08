@@ -1,6 +1,6 @@
 package com.example.springshop.process.domain.productImage.domain;
 
-import com.example.springshop.process.domain.orders.product.domain.Product;
+import com.example.springshop.process.domain.product.domain.Product;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

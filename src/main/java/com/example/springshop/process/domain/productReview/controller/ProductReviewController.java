@@ -1,6 +1,5 @@
 package com.example.springshop.process.domain.productReview.controller;
 
-import com.example.springshop.process.domain.orders.product.service.ProductService;
 import com.example.springshop.process.domain.productReview.domain.ProductReview;
 import com.example.springshop.process.domain.productReview.dto.AddProductReviewDto;
 import com.example.springshop.process.domain.productReview.dto.UpdateProductReviewDto;

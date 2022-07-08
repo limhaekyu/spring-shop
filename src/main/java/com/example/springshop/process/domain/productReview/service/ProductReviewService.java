@@ -1,8 +1,7 @@
 package com.example.springshop.process.domain.productReview.service;
 
-import com.example.springshop.process.domain.orders.domain.Orders;
-import com.example.springshop.process.domain.orders.product.domain.Product;
-import com.example.springshop.process.domain.orders.product.service.ProductService;
+import com.example.springshop.process.domain.product.domain.Product;
+import com.example.springshop.process.domain.product.service.ProductService;
 import com.example.springshop.process.domain.orders.service.OrderService;
 import com.example.springshop.process.domain.productReview.domain.ProductReview;
 import com.example.springshop.process.domain.productReview.dto.AddProductReviewDto;

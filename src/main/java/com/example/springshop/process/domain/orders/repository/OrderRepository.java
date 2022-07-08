@@ -1,7 +1,7 @@
 package com.example.springshop.process.domain.orders.repository;
 
 import com.example.springshop.process.domain.orders.domain.Orders;
-import com.example.springshop.process.domain.orders.product.domain.Product;
+import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

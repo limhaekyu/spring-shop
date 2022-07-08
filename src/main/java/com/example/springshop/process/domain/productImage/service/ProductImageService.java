@@ -1,7 +1,7 @@
 package com.example.springshop.process.domain.productImage.service;
 
-import com.example.springshop.process.domain.orders.product.domain.Product;
-import com.example.springshop.process.domain.orders.product.service.ProductService;
+import com.example.springshop.process.domain.product.domain.Product;
+import com.example.springshop.process.domain.product.service.ProductService;
 import com.example.springshop.process.domain.productImage.domain.ProductImage;
 import com.example.springshop.process.domain.productImage.dto.UpdateProductImageDto;
 import com.example.springshop.process.domain.productImage.dto.UploadProductImageDto;
@@ -39,4 +39,9 @@ public class ProductImageService {
     }
 
 
+    public void deleteProductImage(Long productId) {
+        Product product = productService.findProductByid(productId);
+        ProductImage productImage = productImageRepository.findByProduct(product);
+        productImageRepository.delete(productImage);
+    }
 }

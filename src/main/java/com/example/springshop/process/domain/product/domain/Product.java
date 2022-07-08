@@ -1,4 +1,4 @@
-package com.example.springshop.process.domain.orders.product.domain;
+package com.example.springshop.process.domain.product.domain;
 
 import com.example.springshop.process.domain.likes.domain.Likes;
 import com.example.springshop.process.domain.model.CategoryType;

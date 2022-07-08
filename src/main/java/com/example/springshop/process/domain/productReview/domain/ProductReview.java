@@ -1,6 +1,6 @@
 package com.example.springshop.process.domain.productReview.domain;
 
-import com.example.springshop.process.domain.orders.product.domain.Product;
+import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.productReviewImage.domain.ProductReviewImage;
 import com.example.springshop.process.domain.user.domain.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;

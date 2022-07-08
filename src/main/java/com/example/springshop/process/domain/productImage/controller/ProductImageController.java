@@ -12,6 +12,7 @@ public class ProductImageController {
 
     private final ProductImageService productImageService;
 
+    // 중복체크 필요
     @PostMapping("/api/shop/product-image")
     public void uploadProductImage(@RequestParam Long productId, @RequestBody UploadProductImageDto uploadProductImageDto){
         productImageService.uploadProductImage(productId, uploadProductImageDto);
@@ -20,6 +21,11 @@ public class ProductImageController {
     @PutMapping("/api/shop/product-image")
     public void updateProductImage(@RequestParam Long productId, @RequestBody UpdateProductImageDto updateProductImageDto){
         productImageService.updateProductImage(productId, updateProductImageDto);
+    }
+
+    @DeleteMapping("/api/shop/product-image")
+    public void deleteProductImage(@RequestParam Long productId){
+        productImageService.deleteProductImage(productId);
     }
 
     
