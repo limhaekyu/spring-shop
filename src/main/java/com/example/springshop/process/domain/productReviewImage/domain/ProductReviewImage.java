@@ -33,4 +33,16 @@ public class ProductReviewImage {
     @JsonManagedReference
     private ProductReview productReview;
 
+    public ProductReviewImage(String reviewOriginalImageName, String reviewChangedImageName, String reviewImageUrl, ProductReview productReview) {
+        this.reviewOriginalImageName = reviewOriginalImageName;
+        this.reviewChangedImageName = reviewChangedImageName;
+        this.reviewImageUrl = reviewImageUrl;
+        this.productReview = productReview;
+    }
+
+    public void updateProductReviewImage(String reviewOriginalImageName, String reviewChangedImageName, String reviewImageUrl) {
+        this.reviewOriginalImageName = reviewOriginalImageName;
+        this.reviewChangedImageName = reviewChangedImageName;
+        this.reviewImageUrl = reviewImageUrl;
+    }
 }
