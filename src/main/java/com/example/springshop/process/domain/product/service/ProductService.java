@@ -2,6 +2,7 @@ package com.example.springshop.process.domain.product.service;
 
 import com.example.springshop.process.domain.product.dto.CreateProductDto;
 import com.example.springshop.process.domain.product.dto.ProductInfoDto;
+import com.example.springshop.process.domain.product.dto.UpdateProductInfoDto;
 import com.example.springshop.process.domain.product.repository.ProductRepository;
 import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.productImage.domain.ProductImage;
@@ -51,5 +52,16 @@ public class ProductService {
 
         ProductInfoDto productInfoDto = new ProductInfoDto(product, productImageList);
         return productInfoDto;
+    }
+
+    public void updateProductInfo(Long productId, UpdateProductInfoDto updateProductInfoDto) {
+        Product product = findProductByid(productId);
+        product.updateProductInfo(
+                updateProductInfoDto.getProductName(),
+                updateProductInfoDto.getCategory(),
+                updateProductInfoDto.getProductPrice()
+        );
+        productRepository.save(product);
+
     }
 }

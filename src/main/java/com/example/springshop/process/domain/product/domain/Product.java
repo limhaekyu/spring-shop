@@ -91,4 +91,10 @@ public class Product {
     public void productCancelLike() {
         this.likeCount -= 1;
     }
+
+    public void updateProductInfo(String productName, CategoryType category, Long productPrice) {
+        this.productName = productName;
+        this.category = category;
+        this.productPrice = productPrice;
+    }
 }

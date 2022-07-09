@@ -3,6 +3,7 @@ package com.example.springshop.process.domain.product.controller;
 import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.product.dto.CreateProductDto;
 import com.example.springshop.process.domain.product.dto.ProductInfoDto;
+import com.example.springshop.process.domain.product.dto.UpdateProductInfoDto;
 import com.example.springshop.process.domain.product.service.ProductService;
 import com.example.springshop.process.global.response.ApiResponseDto;
 import lombok.Getter;
@@ -27,6 +28,12 @@ public class ProductController {
         ProductInfoDto productInfoDto = productService.selectProductInfo(productId);
         return ApiResponseDto.of(productInfoDto);
     }
+
+    @PutMapping("/api/shop/product")
+    public void updateProductInfo(@RequestParam Long productId, @RequestBody UpdateProductInfoDto updateProductInfoDto){
+        productService.updateProductInfo(productId, updateProductInfoDto);
+    }
+
 
 
 
