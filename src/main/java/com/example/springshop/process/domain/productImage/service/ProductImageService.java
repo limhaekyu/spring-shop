@@ -9,6 +9,8 @@ import com.example.springshop.process.domain.productImage.repository.ProductImag
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProductImageService {
@@ -28,7 +30,7 @@ public class ProductImageService {
 
     public void updateProductImage(Long productId, UpdateProductImageDto updateProductImageDto) {
         Product product = productService.findProductByid(productId);
-        ProductImage productImage = productImageRepository.findByProduct(product);
+        ProductImage productImage = findProductImageByProduct(product);
         productImage.updateProductImage(
                 updateProductImageDto.getProductOriginalImageName(),
                 updateProductImageDto.getProductChangedImageName(),
@@ -41,7 +43,17 @@ public class ProductImageService {
 
     public void deleteProductImage(Long productId) {
         Product product = productService.findProductByid(productId);
-        ProductImage productImage = productImageRepository.findByProduct(product);
+        ProductImage productImage = findProductImageByProduct(product);
         productImageRepository.delete(productImage);
+    }
+
+    public ProductImage findProductImageByProduct(Product product) {
+        ProductImage productImage = productImageRepository.findByProduct(product);
+        return productImage;
+    }
+
+    public List<ProductImage> findAllProductImageByProduct(Product product) {
+        List<ProductImage> productImageList = productImageRepository.findAllByProduct(product);
+        return productImageList;
     }
 }

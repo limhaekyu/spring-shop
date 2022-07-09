@@ -1,12 +1,17 @@
 package com.example.springshop.process.domain.product.service;
 
 import com.example.springshop.process.domain.product.dto.CreateProductDto;
+import com.example.springshop.process.domain.product.dto.ProductInfoDto;
 import com.example.springshop.process.domain.product.repository.ProductRepository;
 import com.example.springshop.process.domain.product.domain.Product;
+import com.example.springshop.process.domain.productImage.domain.ProductImage;
+import com.example.springshop.process.domain.productImage.service.ProductImageService;
 import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -36,5 +41,15 @@ public class ProductService {
     public Product findProductByid(Long productId){
         return productRepository.findById(productId).orElseThrow(
                 () -> new IllegalArgumentException("상품이 없습니다."));
+    }
+
+    public ProductInfoDto selectProductInfo(Long productId) {
+        // productId를 이용해서 정보랑 imagefile까지 반환
+
+        Product product = findProductByid(productId);
+        List<ProductImage> productImageList = product.getProductImage();
+
+        ProductInfoDto productInfoDto = new ProductInfoDto(product, productImageList);
+        return productInfoDto;
     }
 }
