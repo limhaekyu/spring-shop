@@ -34,6 +34,11 @@ public class ProductController {
         productService.updateProductInfo(productId, updateProductInfoDto);
     }
 
+    @DeleteMapping("/api/shop/product")
+    public void deleteProduct(@RequestParam Long productId){
+        productService.deleteProduct(productId);
+    }
+
 
 
 
