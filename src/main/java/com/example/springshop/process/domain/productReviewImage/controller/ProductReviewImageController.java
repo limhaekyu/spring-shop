@@ -21,4 +21,9 @@ public class ProductReviewImageController {
     public void updateProductReviewImage(@RequestParam Long productReviewImageId, @RequestBody UpdateProductReviewImageDto updateProductReviewImageDto){
         productReviewImageService.updateProductReviewImage(productReviewImageId, updateProductReviewImageDto);
     }
+
+    @DeleteMapping("/api/shop/product-review-image")
+    public void deleteProductReviewImage(@RequestParam Long productReviewImageId){
+        productReviewImageService.deleteProductReviewImage(productReviewImageId);
+    }
 }

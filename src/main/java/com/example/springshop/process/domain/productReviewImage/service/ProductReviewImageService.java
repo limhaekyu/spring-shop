@@ -44,4 +44,9 @@ public class ProductReviewImageService {
         productReviewImageRepository.save(productReviewImage);
 
     }
+
+    public void deleteProductReviewImage(Long productReviewImageId) {
+        ProductReviewImage productReviewImage = findProductReviewImageById(productReviewImageId);
+        productReviewImageRepository.delete(productReviewImage);
+    }
 }
