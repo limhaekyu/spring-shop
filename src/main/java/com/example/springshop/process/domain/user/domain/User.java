@@ -36,6 +36,9 @@ public class User {
     @Column(name = "user_name")
     private String userName;
 
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     @Email
     @Column(name = "email")
     private String email;
@@ -75,15 +78,17 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Answers> answer = new ArrayList<>();
 
-    public User(String userName, String email, String password) {
+    public User(String userName, String email, String password, String phoneNumber) {
         this.userName = userName;
         this.email= email;
         this.password = password;
+        this.phoneNumber = phoneNumber;
     }
 
-    public void updateUserInfo(String userName, String passowrd){
+    public void updateUserInfo(String userName, String passowrd, String phoneNumber){
         this.userName = userName;
         this.password = passowrd;
+        this.phoneNumber = phoneNumber;
     }
 
     public void depositUserAccount(Long accountAmount){

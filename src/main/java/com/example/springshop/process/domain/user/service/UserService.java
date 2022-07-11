@@ -1,9 +1,11 @@
 package com.example.springshop.process.domain.user.service;
 
 import com.example.springshop.process.domain.user.domain.User;
-import com.example.springshop.process.domain.user.dto.CreateUserDto;
-import com.example.springshop.process.domain.user.dto.DepositAmountDto;
-import com.example.springshop.process.domain.user.dto.UpdateUserInfoDto;
+import com.example.springshop.process.domain.user.dto.request.CreateUserDto;
+import com.example.springshop.process.domain.user.dto.request.DepositAmountDto;
+import com.example.springshop.process.domain.user.dto.request.FindUserEmailDto;
+import com.example.springshop.process.domain.user.dto.request.UpdateUserInfoDto;
+import com.example.springshop.process.domain.user.dto.response.FindUserEmailResponseDto;
 import com.example.springshop.process.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     public void createtUser(CreateUserDto insertUserDto) {
-        User user = new User(insertUserDto.getUserName(), insertUserDto.getEmail(), insertUserDto.getPassword());
+        User user = new User(insertUserDto.getUserName(), insertUserDto.getEmail(), insertUserDto.getPassword(), insertUserDto.getPhoneNumber());
         userRepository.save(user);
     }
 
@@ -29,7 +31,8 @@ public class UserService {
         User user = findUserById(userId);
         user.updateUserInfo(
                 updateUserDto.getUserName(),
-                updateUserDto.getPassword()
+                updateUserDto.getPassword(),
+                updateUserDto.getPhoneNumber()
         );
     }
 
@@ -56,5 +59,12 @@ public class UserService {
         }
         userRepository.save(buyer);
         userRepository.save(seller);
+    }
+
+    public FindUserEmailResponseDto findUserEmail(FindUserEmailDto findUserEmailDto) {
+        User user = userRepository.findByUserNameAndPhoneNumber(findUserEmailDto.getUserName(), findUserEmailDto.getPhoneNumber());
+        return new FindUserEmailResponseDto(
+                user.getEmail()
+        );
     }
 }

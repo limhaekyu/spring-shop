@@ -1,4 +1,4 @@
-package com.example.springshop.process.domain.user.dto;
+package com.example.springshop.process.domain.user.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

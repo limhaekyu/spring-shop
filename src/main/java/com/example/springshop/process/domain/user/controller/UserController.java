@@ -3,9 +3,11 @@ package com.example.springshop.process.domain.user.controller;
 import javax.validation.Valid;
 
 import com.example.springshop.process.domain.user.domain.User;
-import com.example.springshop.process.domain.user.dto.CreateUserDto;
-import com.example.springshop.process.domain.user.dto.DepositAmountDto;
-import com.example.springshop.process.domain.user.dto.UpdateUserInfoDto;
+import com.example.springshop.process.domain.user.dto.request.CreateUserDto;
+import com.example.springshop.process.domain.user.dto.request.DepositAmountDto;
+import com.example.springshop.process.domain.user.dto.request.FindUserEmailDto;
+import com.example.springshop.process.domain.user.dto.request.UpdateUserInfoDto;
+import com.example.springshop.process.domain.user.dto.response.FindUserEmailResponseDto;
 import com.example.springshop.process.domain.user.service.UserService;
 import com.example.springshop.process.global.response.ApiResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +45,12 @@ public class UserController {
     public void depositUserAccount(@PathVariable Long userId, @RequestBody DepositAmountDto depositAmountDto){
         userService.depositUserAccount(userId, depositAmountDto);
 
+    }
+
+    @GetMapping("/api/shop/find-user-email")
+    public ApiResponseDto<String> findUserEmail(@RequestBody FindUserEmailDto findUserEmailDto){
+        FindUserEmailResponseDto findUserEmailResponseDto = userService.findUserEmail(findUserEmailDto);
+        return ApiResponseDto.of(findUserEmailResponseDto);
     }
 
 }
