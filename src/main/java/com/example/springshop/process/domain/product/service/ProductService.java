@@ -1,8 +1,10 @@
 package com.example.springshop.process.domain.product.service;
 
+import com.example.springshop.process.domain.model.CategoryType;
 import com.example.springshop.process.domain.product.dto.CreateProductDto;
 import com.example.springshop.process.domain.product.dto.ProductInfoDto;
 import com.example.springshop.process.domain.product.dto.UpdateProductInfoDto;
+import com.example.springshop.process.domain.product.dto.response.CategoryRankingResponseDto;
 import com.example.springshop.process.domain.product.repository.ProductRepository;
 import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.productImage.domain.ProductImage;
@@ -68,5 +70,12 @@ public class ProductService {
     public void deleteProduct(Long productId) {
         Product product = findProductByid(productId);
         productRepository.delete(product);
+    }
+
+    public CategoryRankingResponseDto findCategoryRanking(CategoryType categoryType) {
+        List<Product> productList = productRepository.findAllByCategoryOrderByLikeCountDesc(categoryType);
+        return new CategoryRankingResponseDto(
+                productList
+        );
     }
 }

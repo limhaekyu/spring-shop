@@ -1,9 +1,11 @@
 package com.example.springshop.process.domain.product.controller;
 
+import com.example.springshop.process.domain.model.CategoryType;
 import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.product.dto.CreateProductDto;
 import com.example.springshop.process.domain.product.dto.ProductInfoDto;
 import com.example.springshop.process.domain.product.dto.UpdateProductInfoDto;
+import com.example.springshop.process.domain.product.dto.response.CategoryRankingResponseDto;
 import com.example.springshop.process.domain.product.service.ProductService;
 import com.example.springshop.process.global.response.ApiResponseDto;
 import lombok.Getter;
@@ -39,6 +41,10 @@ public class ProductController {
         productService.deleteProduct(productId);
     }
 
-
+    @GetMapping("/api/shop/category-ranking")
+    public ApiResponseDto<CategoryRankingResponseDto> findCategoryRanking(@RequestParam CategoryType categoryType){
+        CategoryRankingResponseDto categoryRankingResponseDto = productService.findCategoryRanking(categoryType);
+        return ApiResponseDto.of(categoryRankingResponseDto);
+    }
 
 }
