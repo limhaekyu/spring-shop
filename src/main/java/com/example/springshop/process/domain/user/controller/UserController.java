@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @GetMapping("/api/shop/find-user-email")
-    public ApiResponseDto<String> findUserEmail(@RequestBody FindUserEmailDto findUserEmailDto){
+    public ApiResponseDto<FindUserEmailResponseDto> findUserEmail(@RequestBody FindUserEmailDto findUserEmailDto){
         FindUserEmailResponseDto findUserEmailResponseDto = userService.findUserEmail(findUserEmailDto);
         return ApiResponseDto.of(findUserEmailResponseDto);
     }
