@@ -3,21 +3,34 @@ package com.example.springshop.process.domain.user.controller;
 import javax.validation.Valid;
 
 import com.example.springshop.process.domain.user.domain.User;
-import com.example.springshop.process.domain.user.dto.request.CreateUserDto;
-import com.example.springshop.process.domain.user.dto.request.DepositAmountDto;
-import com.example.springshop.process.domain.user.dto.request.FindUserEmailDto;
-import com.example.springshop.process.domain.user.dto.request.UpdateUserInfoDto;
+import com.example.springshop.process.domain.user.dto.request.*;
 import com.example.springshop.process.domain.user.dto.response.FindUserEmailResponseDto;
 import com.example.springshop.process.domain.user.service.UserService;
 import com.example.springshop.process.global.response.ApiResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
+
+
+    // 회원가입
+    @PostMapping("/join")
+    public Long join(@RequestBody Map<String, String> user){
+        return userService.userJoin(user);
+    }
+
+    // 로그인
+    @PostMapping("/login")
+    public String login(@RequestBody UserLoginDto userLoginDto){
+        return userService.userLogin(userLoginDto);
+    }
+
 
     // CRUD
     @PostMapping("/api/shop/user")
