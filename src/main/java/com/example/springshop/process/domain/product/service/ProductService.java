@@ -8,7 +8,6 @@ import com.example.springshop.process.domain.product.dto.response.CategoryRankin
 import com.example.springshop.process.domain.product.repository.ProductRepository;
 import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.productImage.domain.ProductImage;
-import com.example.springshop.process.domain.productImage.service.ProductImageService;
 import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
