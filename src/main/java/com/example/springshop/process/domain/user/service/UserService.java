@@ -73,10 +73,11 @@ public class UserService {
         );
     }
 
-    public Long userJoin(Map<String, String> user) {
+    public Long userJoin(UserJoinDto userJoinDto) {
         return userRepository.save(User.builder()
-                .email(user.get("email"))
-                .password(passwordEncoder.encode(user.get("password")))
+                .userName(userJoinDto.getUserName())
+                .email(userJoinDto.getEmail())
+                .password(passwordEncoder.encode(userJoinDto.getPassword()))
                 .roles(Collections.singletonList("ROLE_USER")) // 최초 가입시 USER로 설정
                 .build()).getId();
     }

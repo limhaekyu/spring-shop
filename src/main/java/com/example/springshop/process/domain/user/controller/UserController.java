@@ -1,16 +1,15 @@
 package com.example.springshop.process.domain.user.controller;
 
-import javax.validation.Valid;
-
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.dto.request.*;
 import com.example.springshop.process.domain.user.dto.response.FindUserEmailResponseDto;
 import com.example.springshop.process.domain.user.service.UserService;
 import com.example.springshop.process.global.response.ApiResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,9 +19,10 @@ public class UserController {
 
 
     // 회원가입
-    @PostMapping("/join")
-    public Long join(@RequestBody Map<String, String> user){
-        return userService.userJoin(user);
+    @PostMapping("/api/shop/join")
+    public ApiResponseDto join(@RequestBody UserJoinDto userJoinDto){
+        userService.userJoin(userJoinDto);
+        return ApiResponseDto.of(HttpStatus.OK);
     }
 
     // 로그인
