@@ -79,6 +79,7 @@ public class UserService {
                 .userName(userJoinDto.getUserName())
                 .email(userJoinDto.getEmail())
                 .password(passwordEncoder.encode(userJoinDto.getPassword()))
+                .phoneNumber(userJoinDto.:getPhoneNumber())
                 .roles(Collections.singletonList("ROLE_USER")) // 최초 가입시 USER로 설정
                 .build());
         } else{
