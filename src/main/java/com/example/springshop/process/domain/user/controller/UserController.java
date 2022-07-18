@@ -20,7 +20,7 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/api/shop/join")
-    public ApiResponseDto join(@RequestBody UserJoinDto userJoinDto){
+    public ApiResponseDto join(@RequestBody @Valid UserJoinDto userJoinDto){
         userService.userJoin(userJoinDto);
         return ApiResponseDto.of(HttpStatus.OK);
     }
@@ -33,10 +33,6 @@ public class UserController {
 
 
     // CRUD
-    @PostMapping("/api/shop/user")
-    public void createtUser(@RequestBody @Valid CreateUserDto createUserDto){
-        userService.createtUser(createUserDto);
-    }
 
     @DeleteMapping("/api/shop/{userId}/user")
     public void deleteUser(@PathVariable Long userId){

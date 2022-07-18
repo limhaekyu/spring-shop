@@ -73,13 +73,17 @@ public class UserService {
         );
     }
 
-    public Long userJoin(UserJoinDto userJoinDto) {
-        return userRepository.save(User.builder()
+    public void userJoin(UserJoinDto userJoinDto) {
+        if (!userRepository.existsByEmailOrPhoneNumber(userJoinDto.getEmail(), userJoinDto.getPhoneNumber())){
+            userRepository.save(User.builder()
                 .userName(userJoinDto.getUserName())
                 .email(userJoinDto.getEmail())
                 .password(passwordEncoder.encode(userJoinDto.getPassword()))
                 .roles(Collections.singletonList("ROLE_USER")) // 최초 가입시 USER로 설정
-                .build()).getId();
+                .build());
+        } else{
+            System.out.println("겹친다");
+        }
     }
 
     public String userLogin(UserLoginDto userLoginDto) {
