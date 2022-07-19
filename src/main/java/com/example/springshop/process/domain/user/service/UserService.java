@@ -23,10 +23,7 @@ public class UserService {
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
 
-    public void createtUser(CreateUserDto insertUserDto) {
-        User user = new User(insertUserDto.getUserName(), insertUserDto.getEmail(), insertUserDto.getPassword(), insertUserDto.getPhoneNumber());
-        userRepository.save(user);
-    }
+
 
     public void deleteUser(Long userId) {
         userRepository.delete(findUserById(userId));
@@ -79,7 +76,7 @@ public class UserService {
                 .userName(userJoinDto.getUserName())
                 .email(userJoinDto.getEmail())
                 .password(passwordEncoder.encode(userJoinDto.getPassword()))
-                .phoneNumber(userJoinDto.:getPhoneNumber())
+                .phoneNumber(userJoinDto.getPhoneNumber())
                 .roles(Collections.singletonList("ROLE_USER")) // 최초 가입시 USER로 설정
                 .build());
         } else{
