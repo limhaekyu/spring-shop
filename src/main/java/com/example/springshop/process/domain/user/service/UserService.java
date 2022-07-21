@@ -3,6 +3,7 @@ package com.example.springshop.process.domain.user.service;
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.dto.request.*;
 import com.example.springshop.process.domain.user.dto.response.FindUserEmailResponseDto;
+import com.example.springshop.process.domain.user.dto.response.FindUserPasswordResponseDto;
 import com.example.springshop.process.domain.user.repository.UserRepository;
 import com.example.springshop.process.global.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
+
 
 
 
@@ -91,5 +93,10 @@ public class UserService {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
         return jwtTokenProvider.createToken(member.getUsername(), member.getRoles());
+    }
+
+
+    public User findByEmailAndUserName(String userEmail, String userName) {
+        return userRepository.findByEmailAndUserName(userEmail, userName);
     }
 }

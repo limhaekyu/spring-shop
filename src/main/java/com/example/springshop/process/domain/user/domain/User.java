@@ -142,4 +142,8 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
+    public void updateUserPw(String pw) {
+        this.password = pw;
+    }
 }

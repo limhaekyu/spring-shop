@@ -5,6 +5,17 @@ spring:
     username: sa
     password:
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 보내는이메일아이디@gmail.com
+    password: 보내는이메일 앱 패스워드
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+
+
   jpa:
     show-sql: true
     hibernate:

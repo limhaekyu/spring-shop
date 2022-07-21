@@ -3,6 +3,8 @@ package com.example.springshop.process.domain.user.controller;
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.dto.request.*;
 import com.example.springshop.process.domain.user.dto.response.FindUserEmailResponseDto;
+import com.example.springshop.process.domain.user.dto.response.MailDto;
+import com.example.springshop.process.domain.user.service.SendEmailService;
 import com.example.springshop.process.domain.user.service.UserService;
 import com.example.springshop.process.global.response.ApiResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +18,7 @@ import javax.validation.Valid;
 public class UserController {
 
     private final UserService userService;
+    private final SendEmailService sendEmailService;
 
 
     // 회원가입
@@ -60,6 +63,13 @@ public class UserController {
     public ApiResponseDto<FindUserEmailResponseDto> findUserEmail(@RequestBody FindUserEmailDto findUserEmailDto){
         FindUserEmailResponseDto findUserEmailResponseDto = userService.findUserEmail(findUserEmailDto);
         return ApiResponseDto.of(findUserEmailResponseDto);
+    }
+
+    @GetMapping("/api/shop/find-password")
+    public ApiResponseDto findUserPassword(@RequestBody FindUserPasswordDto findUserPasswordDto){
+        MailDto mailDto = sendEmailService.createMailAndChangePassword(findUserPasswordDto.getEmail(), findUserPasswordDto.getUserName());
+        sendEmailService.mailSend(mailDto);
+        return ApiResponseDto.of(HttpStatus.OK);
     }
 
 }
