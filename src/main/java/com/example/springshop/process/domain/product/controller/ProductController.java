@@ -1,9 +1,11 @@
 package com.example.springshop.process.domain.product.controller;
 
 import com.example.springshop.process.domain.model.CategoryType;
+import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.product.dto.CreateProductDto;
 import com.example.springshop.process.domain.product.dto.ProductInfoDto;
 import com.example.springshop.process.domain.product.dto.UpdateProductInfoDto;
+import com.example.springshop.process.domain.product.dto.request.SearchProductRequestDto;
 import com.example.springshop.process.domain.product.dto.response.CategoryRankingResponseDto;
 import com.example.springshop.process.domain.product.service.ProductService;
 import com.example.springshop.process.global.response.ApiResponseDto;
@@ -11,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -44,4 +47,11 @@ public class ProductController {
         CategoryRankingResponseDto categoryRankingResponseDto = productService.findCategoryRanking(categoryType);
         return ApiResponseDto.of(categoryRankingResponseDto);
     }
+
+    @GetMapping("/api/shop/search")
+    public ApiResponseDto<List<Product>> searchProduct(@RequestParam String keyword){
+        List<Product> searchProductResponseList = productService.searchProduct(keyword);
+        return ApiResponseDto.of(searchProductResponseList);
+    }
+
 }

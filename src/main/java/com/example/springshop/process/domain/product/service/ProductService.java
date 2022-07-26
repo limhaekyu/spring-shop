@@ -1,12 +1,13 @@
 package com.example.springshop.process.domain.product.service;
 
 import com.example.springshop.process.domain.model.CategoryType;
+import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.product.dto.CreateProductDto;
 import com.example.springshop.process.domain.product.dto.ProductInfoDto;
 import com.example.springshop.process.domain.product.dto.UpdateProductInfoDto;
+import com.example.springshop.process.domain.product.dto.request.SearchProductRequestDto;
 import com.example.springshop.process.domain.product.dto.response.CategoryRankingResponseDto;
 import com.example.springshop.process.domain.product.repository.ProductRepository;
-import com.example.springshop.process.domain.product.domain.Product;
 import com.example.springshop.process.domain.productImage.domain.ProductImage;
 import com.example.springshop.process.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -76,5 +77,10 @@ public class ProductService {
         return new CategoryRankingResponseDto(
                 productList
         );
+    }
+
+    public List<Product> searchProduct(String keyword) {
+        List<Product> productList = productRepository.findAllByProductNameContaining(keyword);
+        return productList;
     }
 }
