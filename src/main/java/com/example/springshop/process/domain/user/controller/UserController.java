@@ -30,8 +30,9 @@ public class UserController {
 
     // 로그인
     @PostMapping("/login")
-    public String login(@RequestBody UserLoginDto userLoginDto){
-        return userService.userLogin(userLoginDto);
+    public ApiResponseDto login(@RequestBody UserLoginRequestDto userLoginDto){
+        userService.userLogin(userLoginDto);
+        return ApiResponseDto.of(HttpStatus.OK);
     }
 
 

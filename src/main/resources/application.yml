@@ -30,7 +30,7 @@ spring:
 
   mvc:
     view:
-      prefix: /templates
+      prefix: /templates/
       suffix: .html
 
 logging:

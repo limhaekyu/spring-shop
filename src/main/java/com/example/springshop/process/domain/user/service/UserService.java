@@ -1,19 +1,15 @@
 package com.example.springshop.process.domain.user.service;
 
+import com.auth0.jwt.JWT;
+import com.example.springshop.process.domain.model.Role;
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.dto.request.*;
 import com.example.springshop.process.domain.user.dto.response.FindUserEmailResponseDto;
-import com.example.springshop.process.domain.user.dto.response.FindUserPasswordResponseDto;
 import com.example.springshop.process.domain.user.repository.UserRepository;
-import com.example.springshop.process.global.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Collections;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -21,7 +17,6 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
 
 
@@ -79,20 +74,19 @@ public class UserService {
                 .email(userJoinDto.getEmail())
                 .password(passwordEncoder.encode(userJoinDto.getPassword()))
                 .phoneNumber(userJoinDto.getPhoneNumber())
-                .roles(Collections.singletonList("ROLE_USER")) // 최초 가입시 USER로 설정
+                .role(Role.USER) // 최초 가입시 USER로 설정
                 .build());
         } else{
             System.out.println("겹친다");
         }
     }
 
-    public String userLogin(UserLoginDto userLoginDto) {
+    public void userLogin(UserLoginRequestDto userLoginDto) {
         User member = userRepository.findByEmail(userLoginDto.getEmail())
                 .orElseThrow( () -> new IllegalArgumentException("가입되지 않은 E-MAIL 입니다."));
         if(!passwordEncoder.matches(userLoginDto.getPassword(), member.getPassword())){
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
-        return jwtTokenProvider.createToken(member.getUsername(), member.getRoles());
     }
 
 
