@@ -65,9 +65,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
 
         String jwtToken = JWT.create()
-                        .withIssuer("limhaekyu")
-                        .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
-                        .withClaim("email", userDetails.getUser().getEmail())
+                        .withIssuer("limhaekyu") // 발행자
+                        .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME)) // 토큰 유효기간
+                        .withClaim("email", userDetails.getUser().getEmail()) // 토큰에 담은 정보
                         .sign(Algorithm.HMAC512(JwtProperties.SECRET));
 
         System.out.println(userDetails.getUser().getEmail());
