@@ -25,6 +25,7 @@ import java.util.Date;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
 
+    // login 요청을 하면 로그인 시도를 위해서 실행되는 함수
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("JwtAuthenticationFilter : 로그인 요청");
@@ -60,24 +61,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
+
         UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
-
-        // 토큰생성
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, 1); // 만료일 1일
-
-        Claims claims = Jwts.claims()
-                .setSubject("access_token")
-                .setIssuedAt(new Date()) // 생성일 설정
-                .setExpiration(new Date(cal.getTimeInMillis())); // 만료일 설정
-
-        claims.put("email", userDetails.getUser().getEmail()); // 담고 싶은 값
 
         String jwtToken = JWT.create()
                         .withIssuer("limhaekyu")
                         .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
                         .withClaim("email", userDetails.getUser().getEmail())
                         .sign(Algorithm.HMAC512(JwtProperties.SECRET));
+
+        System.out.println(userDetails.getUser().getEmail());
 
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
     }
