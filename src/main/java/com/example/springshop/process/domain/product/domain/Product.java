@@ -70,7 +70,7 @@ public class Product {
 
     @JsonBackReference
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Orders> order = new ArrayList<>();
+    private List<Orders> orders = new ArrayList<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

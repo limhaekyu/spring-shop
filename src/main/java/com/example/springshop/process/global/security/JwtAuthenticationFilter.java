@@ -50,7 +50,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         // PrincipalDetail의 loadUserByUsername() 함수 실행됨
         Authentication authentication =
                 authenticationManager.authenticate(authenticationToken);
-
         // authentication 객체가 session 영역에 저장 -> 로그인 성공
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         System.out.println("Authentication : " + userDetails);
