@@ -49,6 +49,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors()
+                .and()
                 .csrf().disable(); // csrf 보안 토큰 설정 헤제
         http
                 .headers().frameOptions().disable();
@@ -63,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .authorizeRequests()
 
-                .antMatchers("/join").permitAll()
+                .antMatchers("/api/shop/join").permitAll()
                 .antMatchers("/login").permitAll()
                 .anyRequest().authenticated();
     }
