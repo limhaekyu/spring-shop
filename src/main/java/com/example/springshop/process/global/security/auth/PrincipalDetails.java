@@ -1,6 +1,8 @@
-package com.example.springshop.process.global.security;
+package com.example.springshop.process.global.security.auth;
 
 import com.example.springshop.process.domain.user.domain.User;
+import lombok.Builder;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -8,21 +10,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-@RequiredArgsConstructor
-public class UserDetailsImpl implements UserDetails {
+@Data
+public class PrincipalDetails implements UserDetails {
 
     private final User user;
 
     private Collection<SimpleGrantedAuthority> authorities;
 
-    @Override
-    public String getPassword(){
-        return user.getPassword();
-    }
-
-    @Override
-    public String getUsername(){
-        return user.getUserName();
+    public PrincipalDetails(User user, Collection<SimpleGrantedAuthority> authorities){
+        this.user = user;
+        this.authorities = authorities;
     }
 
     @Override
@@ -50,12 +47,24 @@ public class UserDetailsImpl implements UserDetails {
         return this.authorities;
     }
 
+    @Override
+    public String getPassword()
+    {
+        return user.getPassword();
+    }
+    // security의 username -> Email로 인증
+    @Override
+    public String getUsername(){
+        return user.getEmail();
+    }
+
+    // Principal의 userName;
+    public String getUserName(){
+        return user.getUserName();
+    }
+
     public User getUser(){
         return user;
     }
 
-    public UserDetailsImpl(User user, Collection<SimpleGrantedAuthority> authorities){
-        this.user = user;
-        this.authorities = authorities;
-    }
 }

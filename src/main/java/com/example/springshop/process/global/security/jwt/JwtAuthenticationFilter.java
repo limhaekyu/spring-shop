@@ -1,8 +1,9 @@
-package com.example.springshop.process.global.security;
+package com.example.springshop.process.global.security.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.example.springshop.process.domain.user.dto.request.UserLoginRequestDto;
+import com.example.springshop.process.global.security.auth.PrincipalDetails;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -51,8 +52,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         Authentication authentication =
                 authenticationManager.authenticate(authenticationToken);
         // authentication 객체가 session 영역에 저장 -> 로그인 성공
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        System.out.println("Authentication : " + userDetails);
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+        System.out.println("Authentication : " + principalDetails);
         return authentication;
     }
 
@@ -61,15 +62,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
 
-        UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
+        PrincipalDetails principalDetails = (PrincipalDetails) authResult.getPrincipal();
 
         String jwtToken = JWT.create()
                         .withIssuer("limhaekyu") // 발행자
                         .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME)) // 토큰 유효기간
-                        .withClaim("email", userDetails.getUser().getEmail()) // 토큰에 담은 정보
+                        .withClaim("email", principalDetails.getUser().getEmail()) // 토큰에 담은 정보
                         .sign(Algorithm.HMAC512(JwtProperties.SECRET));
 
-        System.out.println(userDetails.getUser().getEmail());
+        System.out.println(principalDetails.getUser().getEmail());
 
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
     }

@@ -19,7 +19,9 @@ import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -53,8 +55,15 @@ public class User {
     @ColumnDefault("0L")
     private Long accountAmount;
 
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @Column(name = "append_date")
+    private LocalDateTime appendDate;
+
+    @Column(name = "update_date")
+    private LocalDateTime updateDate;
 
     @JsonBackReference
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -110,4 +119,11 @@ public class User {
         this.password = pw;
     }
 
+    @Builder
+    public User(String password, Role role, LocalDateTime appendDate, LocalDateTime updateDate){
+        this.password = password;
+        this.role = role;
+        this.appendDate = appendDate;
+        this.updateDate = updateDate;
+    }
 }

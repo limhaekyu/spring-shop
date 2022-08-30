@@ -13,12 +13,14 @@ spring:
       prefix: /templates/
       suffix: .html
 
+
 logging:
   level:
     org:
       hibernate:
         SQL: debug
         type: trace
+
 ---
 
 spring:

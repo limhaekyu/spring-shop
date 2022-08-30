@@ -19,9 +19,6 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-
-
-
     public void deleteUser(Long userId) {
         userRepository.delete(findUserById(userId));
     }
@@ -67,7 +64,7 @@ public class UserService {
         );
     }
 
-    public void userJoin(UserJoinDto userJoinDto) {
+    public void userJoin(User userJoinDto) {
         if (!userRepository.existsByEmailOrPhoneNumber(userJoinDto.getEmail(), userJoinDto.getPhoneNumber())){
             userRepository.save(User.builder()
                 .userName(userJoinDto.getUserName())

@@ -1,10 +1,4 @@
 spring:
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/shop
-    username: sa
-    password:
-
   mail:
     host: smtp.gmail.com
     port: 587
@@ -14,24 +8,11 @@ spring:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
 
-
-
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: none
-    properties:
-      hibernate:
-        format_sql: true
-
-  h2:
-    console:
-      enable: true
-
   mvc:
     view:
       prefix: /templates/
       suffix: .html
+
 
 logging:
   level:
@@ -39,3 +20,21 @@ logging:
       hibernate:
         SQL: debug
         type: trace
+
+---
+
+spring:
+  profiles:
+    active: prod
+
+---
+
+spring:
+  profiles:
+    active: dev
+
+---
+
+spring:
+  profiles:
+    active: local

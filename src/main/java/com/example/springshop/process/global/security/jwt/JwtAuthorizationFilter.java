@@ -1,11 +1,11 @@
-package com.example.springshop.process.global.security;
+package com.example.springshop.process.global.security.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.example.springshop.process.domain.user.domain.User;
 import com.example.springshop.process.domain.user.repository.UserRepository;
-import io.jsonwebtoken.Jwts;
-import lombok.RequiredArgsConstructor;
+import com.example.springshop.process.global.security.auth.PrincipalDetails;
+import com.example.springshop.process.global.security.auth.PrincipalDetailsService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,7 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
-import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +31,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        System.out.println("--------Start check Authorization in JWT token--------");
+        System.out.println("JWT 토큰 검증 시작");
         // 클라이언트가 요청한 헤더에 Authorization이 있는지 검증 / 없으면 다시 필터 타게
         String header = request.getHeader(JwtProperties.HEADER_STRING);
         if(header == null || !header.startsWith(JwtProperties.TOKEN_PREFIX)){
@@ -57,8 +56,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             User user = userRepository.findByEmail(email)
                     .orElseThrow( ()-> new UsernameNotFoundException("없는 이메일 입니다."));
 
-            // security가 수행해주는 권한 처리를 위해 토크능ㄹ 만들어서 Authentication 객체를 강제로 만들고 그걸 세션에 저장
-            UserDetailsImpl userDetails = new UserDetailsImpl(user, UserDetailsServiceImpl.getUserDetails(user));
+            // security가 수행해주는 권한 처리를 위해 토큰을 만들어서 Authentication 객체를 강제로 만들고 그걸 세션에 저장
+            PrincipalDetails userDetails = new PrincipalDetails(user, PrincipalDetailsService.getUserDetails(user));
             Authentication authentication =
                     new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 

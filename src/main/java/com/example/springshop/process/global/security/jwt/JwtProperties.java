@@ -1,4 +1,4 @@
-package com.example.springshop.process.global.security;
+package com.example.springshop.process.global.security.jwt;
 
 public interface JwtProperties {
     String SECRET = "shop";

@@ -23,7 +23,7 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/api/shop/join")
-    public ApiResponseDto join(@RequestBody @Valid UserJoinDto userJoinDto){
+    public ApiResponseDto join(@RequestBody @Valid User userJoinDto){
         userService.userJoin(userJoinDto);
         return ApiResponseDto.of(HttpStatus.OK);
     }
