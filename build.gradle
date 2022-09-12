@@ -47,6 +47,9 @@ dependencies {
     // thymeleaf
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
+    // jackson : json으로 처리해주기 위한 라이브러리
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+
 }
 
 tasks.named('test') {

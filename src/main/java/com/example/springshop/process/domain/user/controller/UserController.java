@@ -9,9 +9,11 @@ import com.example.springshop.process.domain.user.service.UserService;
 import com.example.springshop.process.global.response.ApiResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.http.HttpResponse;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,9 +25,10 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/api/shop/join")
-    public ApiResponseDto join(@RequestBody @Valid User userJoinDto){
+    public ResponseEntity<UserJoinDto> join(@RequestBody @Valid UserJoinDto userJoinDto){
         userService.userJoin(userJoinDto);
-        return ApiResponseDto.of(HttpStatus.OK);
+//        return ApiResponseDto.of(HttpStatus.OK);
+        return ResponseEntity.ok().body(userJoinDto);
     }
 
     // 로그인

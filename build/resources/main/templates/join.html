@@ -3,20 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.serializeObject/2.0.3/jquery.serializeObject.min.js"></script>
+
+
+
 </head>
+
 <body>
-<div class="container">
-    <h1>회원가입</h1>
-    <form th:action="@{/join}" method="post">
-        <div class="form-group">
-            <label th:for="username">아이디</label>
-            <input type="text" name="username" class="form-control" placeholder="아이디 입력해주세요">
-        </div>
-        <div class="form-group">
-            <label th:for="password">비밀번호</label>
-            <input type="password" class="form-control" name="password" placeholder="비밀번호 입력해주세요">
-        </div>
-        <button type="submit" class="btn btn-primary">회원가입</button>
-    </form>
+    <div class="container">
+        <h1>회원가입</h1>
+        <form method="post" id="joinForm" name="joinForm">
+            <div class="form-group">
+                <label th:for="email">아이디</label>
+                <input type="text" name="email" id="email" class="form-control" placeholder="이메일를 입력해주세요">
+            </div>
+            <div class="form-group">
+                <label th:for="password">비밀번호</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력해주세요">
+            </div>
+            <div class="form-group">
+                <label th:for="userName">이름</label>
+                <input type="text" class="form-control" name="userName" id="userName" placeholder="이름을 입력해주세요">
+            </div>
+            <div class="form-group">
+                <label th:for="phoneNumber">전화번호</label>
+                <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" placeholder="전화번호를 입력해주세요">
+            </div>
+            <input type="button" id="user-join-btn" class="btn btn-primary">회원가입</input>
+        </form>
+    </div>
 </body>
+<script>
+    var joinData = {
+        // 초기화(이벤트 등록) 메소드
+        init: function() {
+            // 스코프 충돌 방지! (https://mobicon.tistory.com/189)
+            var _this = this;
+            // 회원가입 버튼 선택
+            const joinBtn = document.querySelector('#user-join-btn');
+            // 회원가입 버튼 클릭 시, 동작 할 메소드를 연결!
+            joinBtn.addEventListener('click', _this.create);
+        },
+        // article 생성 메소드
+        create: function() {
+            // form 데이터를 JSON으로 만듬
+            var data = {
+                email: document.querySelector('#email').value,
+                password: document.querySelector('#password').value,
+                userName: document.querySelector('#userName').value,
+                phoneNumber: document.querySelector('#phoneNumber').value
+            };
+            // 데이터 생성 요청을 보냄
+            // fetch(URL, HTTP_REQUEST)
+            fetch('/api/shop/join', {
+                method: 'POST', // POST 방식으로, HTTP 요청.
+                body: JSON.stringify(data), // 위에서 만든 폼 데이터(data)를 함께 보냄.
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function(response) { // 응답 처리!
+                // 요청 성공!
+                if (response.ok) {
+                    alert('회원가입에 성공했습니다..');
+                    console.log(JSON.stringify(data));
+                    // window.location.href='/loginPage'; // 해당 URL로 브라우저를 새로고침!
+                } else { // 요청 실패..
+                    alert('회원가입에 실패했습니다..');
+                }
+            });
+        }
+    };
+    // 객체 초기화
+    joinData.init();
+
+    //        function userJoin(){
+    //            var sendData = {
+    //                email: $('#email').val(),
+    //                password: $('#password').val(),
+    //                userName: $('#userName').val(),
+    //                phoneNumber: $('#phoneNumber').val()
+    //            };
+    //            console.log(sendData)
+    //            $.ajax({
+    //                type: 'POST',
+    //                url :'/api/shop/join',
+    //                contentType : 'application/json; charset-utf-8',
+    //                data: JSON.stringify(sendData),
+    //                success : function(msg,data) {
+    //                    // if(msg.result == "success"){
+    //                    //     console.log(data);
+    //                    //     alert("회원가입에 성공하셨습니다.");
+    //                    //     path = '/loginPage'
+    //                    // } else if(msg.result != "success"){
+    //                    //     console.log(data)
+    //                    //     alert("처리를 실패하였습니다.");
+    //                    //     path = '/joinPage'
+    //                    // }
+    //                    // location.href = path;
+    //                    alert(msg);
+    //                    alert(data);
+    //                }
+    //                // error: function (error, result){
+    //                //     console.log(error)
+    //                // }
+    //            });
+    //        }
+</script>
+
+
 </html>

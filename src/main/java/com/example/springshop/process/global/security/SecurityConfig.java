@@ -69,7 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))
 
                 .authorizeRequests()
-                .antMatchers("/loginPage", "/join", "/login_success", "/login_failed", "/resources/**").permitAll() // 로그인 권한 누구나, resources 파일도 모든 권한
+                .antMatchers("/loginPage", "/join", "/joinPage", "/login_success", "/login_failed", "/resources/**").permitAll() // 로그인 권한 누구나, resources 파일도 모든 권한
                 // USER, ADMIN 접근 허용
                 .antMatchers("/userSuccess").hasRole("USER")
                 .antMatchers("/userSuccess").hasRole("ADMIN")

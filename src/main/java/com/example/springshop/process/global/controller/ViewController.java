@@ -1,15 +1,15 @@
 package com.example.springshop.process.global.controller;
 
+import com.example.springshop.process.domain.user.dto.request.UserJoinDto;
 import com.example.springshop.process.domain.user.service.UserService;
 import com.example.springshop.process.global.security.auth.PrincipalDetails;
 import com.example.springshop.process.global.security.auth.PrincipalDetailsService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -17,6 +17,7 @@ public class ViewController {
 
     private final PrincipalDetailsService principalDetailsService;
     private final UserService userService;
+
 
     @GetMapping("/")
     public String Index(){
@@ -43,11 +44,15 @@ public class ViewController {
         return "login_failed";
     }
 
-    @PostMapping("/join")
-    public String join(PrincipalDetails principalDetails){
-        userService.userJoin(principalDetails.getUser());
-        return "redirect:/login";
-    }
+//    @RequestMapping(value = "/join", method = RequestMethod.POST)
+//    public String join(@RequestParam UserJoinDto userJoinDto){
+//        System.out.println(userJoinDto.getEmail());
+//        System.out.println(userJoinDto.getUserName());
+//        System.out.println(userJoinDto.getPhoneNumber());
+//        System.out.println(userJoinDto.getPassword());
+//        userService.userJoin(userJoinDto);
+//        return "redirect:/login";
+//    }
 
     @GetMapping("/userAccess")
     public String userAccess(Model model, Authentication authentication) {

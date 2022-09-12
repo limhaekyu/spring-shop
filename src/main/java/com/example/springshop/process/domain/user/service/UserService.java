@@ -64,17 +64,20 @@ public class UserService {
         );
     }
 
-    public void userJoin(User userJoinDto) {
+    public void userJoin(UserJoinDto userJoinDto) {
+
         if (!userRepository.existsByEmailOrPhoneNumber(userJoinDto.getEmail(), userJoinDto.getPhoneNumber())){
             userRepository.save(User.builder()
-                .userName(userJoinDto.getUserName())
                 .email(userJoinDto.getEmail())
                 .password(passwordEncoder.encode(userJoinDto.getPassword()))
+                .userName(userJoinDto.getUserName())
                 .phoneNumber(userJoinDto.getPhoneNumber())
                 .role(Role.USER) // 최초 가입시 USER로 설정
                 .build());
-        } else{
-            System.out.println("겹친다");
+        } else if(userRepository.existsByEmail(userJoinDto.getEmail())){
+            System.out.println("이미 사용중인 이메일입니다.");
+        } else if(userRepository.existsByPhoneNumber(userJoinDto.getPhoneNumber())){
+            System.out.println("이미 사용중인 전화번호입니다.");
         }
     }
 
